@@ -35,7 +35,7 @@ const HeroContent = () => {
       <div className="flex items-center lg:justify-start relative my-20 z-10 lg:w-[60%] ">
         <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center lg:justify-start">
           <TextGenerateEffect
-            className="text-left lg:text-left text-[40px] md:text-4xl lg:text-5xl"
+            className="text-center lg:text-left text-[40px] md:text-4xl lg:text-5xl"
             words={configValues.heading as string}
           />
           <p className="text-center lg:text-left md:tracking-wider mb-10 text-sm md:text-lg lg:text-2xl text-white">
