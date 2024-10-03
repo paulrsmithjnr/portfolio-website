@@ -73,7 +73,7 @@ const ExperienceCard = ({ experience }: { experience: ExperienceItem }) => {
         }}
         className="flex-1 text-white border-slate-800"
       >
-        <div className="lg:ms-5 p-3 py-6 md:p-5 lg:p-10">
+        <div className="lg:ms-5 p-6 md:p-5 lg:p-10">
           <h1 className="text-white text-start text-xl md:text-2xl font-bold">
             {experience.title}
           </h1>
