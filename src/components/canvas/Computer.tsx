@@ -13,7 +13,7 @@ const Computer: React.FC<ComputerProps> = ({ isMobile }) => {
 
   return (
     <mesh>
-      <hemisphereLight intensity={1.3} groundColor="black" />
+      <hemisphereLight intensity={2} groundColor="black" />
       <spotLight
         position={[-20, 50, 10]}
         angle={0.12}
@@ -26,8 +26,8 @@ const Computer: React.FC<ComputerProps> = ({ isMobile }) => {
       <primitive
         object={computer.scene}
         scale={isMobile ? 0.8 : 1}
-        position={isMobile ? [0, -3, -2.2] : [0, -2.25, -2.5]}
-        rotation={[-0.01, 0.5, 0]}
+        position={isMobile ? [1, -3, -2.2] : [0, -2.5, -2.5]}
+        rotation={[-0.01, 0.5, -0.05]}
       />
     </mesh>
   );

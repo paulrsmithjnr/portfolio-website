@@ -117,7 +117,7 @@ export const BentoGridItem = ({
           className={cn(
             textClassName,
             `relative md:h-full min-h-40 text-white-100 flex flex-col z-20 ${
-              id !== "one" && "px-5 p-5 lg:p-10 group-hover/bento:translate-x-2 transition duration-200"
+              (id !== "one" && id !== "six") && "px-5 p-5 lg:p-10 group-hover/bento:translate-x-2 transition duration-200"
             }`
           )}
         >
