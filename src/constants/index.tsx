@@ -168,9 +168,10 @@ export const experiences: ExperienceItem[] = [
     startDate: "Apr 2023",
     endDate: "Present",
     points: [
-      "Collaborate cross-functionally with data scientists, business users, project managers, and engineers to deliver optimal solutions.",
-      "Support the entire application lifecycle for mobile applications, including design, testing, release, and maintenance.",
-      "Develop software solutions by studying user requirements and analyzing systems flow.",
+      "Collaborate cross-functionally with data scientists, business users, project managers, and engineers to deliver optimal solutions that meet user needs.",
+      "Support the entire application lifecycle for mobile applications, including design, testing, release, and maintenance, ensuring high-quality deliverables.",
+      "Develop software solutions by studying user requirements and analyzing system flows, leading to improved performance and user satisfaction.",
+      "Contribute to the GKOne App by implementing critical bug fixes and enhancements for core features, significantly improving overall application performance and user satisfaction, while also enhancing the user experience by adding new functionalities and integrations to broaden the app's capabilities."
     ],
     tools: [
       tools.aspNet,
@@ -193,9 +194,9 @@ export const experiences: ExperienceItem[] = [
     startDate: "Sep 2022",
     endDate: "Apr 2023",
     points: [
-      "Demonstrated leadership and mentorship skills by providing guidance and overseeing the work of interns, ensuring their growth and development. ",
-      "Conducted thorough code reviews to maintain code quality and adherence to best practices.",
-      "Ensured the seamless operation of enterprise applications by actively providing maintenance support, effectively resolving issues, and implementing timely updates to uphold optimal performance.",
+      "Demonstrated leadership and mentorship skills by providing guidance and overseeing the work of interns, fostering their growth and professional development.",
+      "Conducted thorough code reviews to ensure high code quality and adherence to best practices, contributing to a more robust and maintainable codebase.",
+      "Ensured the seamless operation of enterprise applications by actively providing maintenance support, effectively resolving issues, and implementing timely updates to optimize performance and enhance user satisfaction.",
     ],
     tools: [
       tools.javaScript,
@@ -234,7 +235,7 @@ export const experiences: ExperienceItem[] = [
     startDate: "Jul 2022",
     endDate: "Apr 2023",
     points: [
-      "Ensured the seamless operation of enterprise applications by actively providing maintenance support, effectively resolving issues, and implementing timely updates to uphold optimal performance.",
+      "Ensured the seamless operation of enterprise applications by actively providing maintenance support, effectively resolving issues, and implementing timely updates to optimize performance and enhance user satisfaction.",
     ],
     tools: [
       tools.javaScript,
