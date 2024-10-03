@@ -81,12 +81,12 @@ const Projects = () => {
                 </p>
               </div>
 
-              <div className="flex flex-col justify-center items-center mt-5 mb-5">
-                <div className="flex items-center">
+              <div className="flex flex-row justify-between items-center mt-10 w-full">
+                <div className="flex flex-row items-center justify-center">
                   {project.iconLists.map((icon, index) => (
                     <div
                       key={index}
-                      className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
+                      className="border border-white/[.2] rounded-full bg-black  w-8 h-8 flex justify-center items-center"
                       style={{
                         transform: `translateX(-${5 * index + 2}px)`,
                       }}
@@ -97,7 +97,7 @@ const Projects = () => {
                 </div>
 
                 <a
-                  className="flex justify-center items-center mt-5"
+                  className="flex justify-center items-center"
                   href={configValues[project.id] as string}
                   target="_blank"
                   rel="noopener noreferrer"
