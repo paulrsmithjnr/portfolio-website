@@ -7,7 +7,7 @@ const About = () => {
   const configValues = useRemoteConfig();
   
   return (
-      <BentoGrid className="w-full py-20">
+      <BentoGrid className="w-full mb-32">
         {aboutItems.map((aboutItem, i) => (
           <BentoGridItem
             id={aboutItem.id}

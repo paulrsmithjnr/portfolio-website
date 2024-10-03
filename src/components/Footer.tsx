@@ -11,7 +11,7 @@ const Footer = () => {
   const configValues = useRemoteConfig();
 
   return (
-    <footer className="relative pt-20 pb-10">
+    <footer className="relative mb-10">
       <FooterBg />
       <div className="flex flex-col items-center">
         <SectionHeader text={configValues.footerSectionHeading as string} highlightCount={5} />
@@ -57,7 +57,7 @@ const Footer = () => {
 const FooterBg = () => {
   return (
     <div className="w-full absolute left-0 -bottom-72 min-h-96">
-      <img src={footerGrid} alt="grid" className="w-full h-full opacity-80 " />
+      <img src={footerGrid} alt="grid" className="w-full h-full opacity-70 " />
     </div>
   );
 };

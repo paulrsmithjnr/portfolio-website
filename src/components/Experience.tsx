@@ -105,7 +105,7 @@ const Experience = () => {
   const configValues = useRemoteConfig();
 
   return (
-    <div className="py-20 w-full">
+    <div className="mb-32">
       <SectionHeader
         text={configValues.experienceSectionHeading as string}
         highlightCount={2}

@@ -12,7 +12,7 @@ const SectionWrapper = <P extends object>(
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.25 }}
-        className="relative z-0 bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5"
+        className="relative z-0 bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5 w-full"
       >
         <div className="max-w-7xl w-full">
           <span className="hash-span" id={idName}>

@@ -14,7 +14,7 @@ const Projects = () => {
   const configValues = useRemoteConfig();
 
   return (
-    <div className="w-full pb-20">
+    <div className="mb-32">
       <SectionHeader
         text={configValues.projectsSectionHeading as string}
         highlightCount={2}

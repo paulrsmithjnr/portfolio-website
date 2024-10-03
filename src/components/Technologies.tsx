@@ -7,7 +7,7 @@ import { useRemoteConfig } from "./RemoteConfigComponent";
 const Technologies = () => {
   const configValues = useRemoteConfig();
   return (
-    <div className="py-20 w-full">
+    <div className="mb-32">
       <SectionHeader
         text={configValues.technologiesSectionHeading as string}
         highlightCount={4}
