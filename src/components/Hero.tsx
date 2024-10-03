@@ -43,7 +43,7 @@ const HeroContent = () => {
           </p>
 
           <div className="w-full justify-center xl:justify-start flex flex-col xl:flex-row gap-6">
-            <a href={configValues.resumeUrl as string} target="_blank" rel="noopener noreferrer">
+            <a href="./Paul Smith.pdf" target="_blank" rel="noopener noreferrer">
               <MagicBorderButton
                 text={configValues.resumeCta as string}
                 icon={<FaDownload />}
