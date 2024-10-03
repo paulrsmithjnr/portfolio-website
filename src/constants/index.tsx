@@ -301,6 +301,7 @@ export const experiences: ExperienceItem[] = [
       tools.javaScript,
       tools.typeScript,
       tools.vueJs,
+      tools.nuxtJs,
       tools.bootstrap,
       tools.nodeJs,
       tools.express,
