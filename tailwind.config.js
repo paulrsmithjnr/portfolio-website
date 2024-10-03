@@ -11,6 +11,9 @@ module.exports = {
   mode: "jit",
   theme: {
     extend: {
+      backgroundImage: {
+        'black-gradient': 'linear-gradient(to right, #2c2c2c, #000000)',
+      },
       animation: {
         floating: "floating 3s ease-in-out infinite",
         "accordion-down": "accordion-down 0.2s ease-out",

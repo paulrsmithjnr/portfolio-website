@@ -7,6 +7,7 @@ import Experience from "./components/Experience";
 import Technologies from "./components/Technologies";
 import Footer from "./components/Footer";
 import BackToTopFAB from "./components/ui/BackToTopFAB";
+import Projects from "./components/Projects";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <About />
       <Experience />
       <Technologies />
+      <Projects />
       <Footer />
       <BackToTopFAB />
     </BrowserRouter>

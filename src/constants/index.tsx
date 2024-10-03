@@ -17,6 +17,8 @@ import {
   wink,
   linkedin,
   github,
+  portfolio,
+  three,
 } from "../assets";
 
 export const tools = {
@@ -81,6 +83,11 @@ export const navItems: NavItem[] = [
     id: "technologies",
     name: "Technologies",
     link: "#technologies",
+  },
+  {
+    id: "projects",
+    name: "Projects",
+    link: "#projects",
   },
   {
     id: "footer",
@@ -343,50 +350,23 @@ export const technologies: Technology[] = [
 ];
 
 export interface Project {
-  id: number;
+  id: string;
   title: string;
   description: string;
   img: string;
   iconLists: string[];
-  link: string;
+  githubLink?: string;
 }
 
 export const projects: Project[] = [
   {
-    id: 1,
-    title: "3D Solar System Planets to Explore",
+    id: "projectOne",
+    title: "My Portfolio Website",
     description:
-      "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-    img: "/p1.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-    link: "/ui.earth.com",
-  },
-  {
-    id: 2,
-    title: "Yoom - Video Conferencing App",
-    description:
-      "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-    img: "/p2.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-    link: "/ui.yoom.com",
-  },
-  {
-    id: 3,
-    title: "AI Image SaaS - Canva Application",
-    description:
-      "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
-    img: "/p3.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-    link: "/ui.aiimg.com",
-  },
-  {
-    id: 4,
-    title: "Animated Apple Iphone 3D Website",
-    description:
-      "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-    img: "/p4.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-    link: "/ui.apple.com",
+      "A personal portfolio highlighting my skills as a full-stack developer, featuring responsive design, intuitive user experiences, and modern web technologies.",
+    img: portfolio,
+    iconLists: [reactjs, tailwind, typescript, three, firebase],
+    githubLink: "https://github.com/paulrsmithjnr/portfolio-website",
   },
 ];
 

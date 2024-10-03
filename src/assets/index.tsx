@@ -12,11 +12,15 @@ export { default as firebase } from "./tech/firebase.svg";
 export { default as python } from "./tech/python.png";
 export { default as java } from "./tech/java.png";
 export { default as flutter } from "./tech/flutter.png";
+export { default as three } from "./tech/three.svg";
 
 export { default as mgi } from "./company/mgi.png";
 export { default as speur } from "./company/speur.png";
 export { default as ncb } from "./company/ncb.png";
 export { default as gkfg } from "./company/gkfg.png";
+
+export { default as portfolio } from "./project/portfolio.png";
+export { default as projectImgBg } from "./project/projectImgBg.png";
 
 export { default as linkedin } from "./linkedin.svg";
 export { default as github } from "./github.svg";
