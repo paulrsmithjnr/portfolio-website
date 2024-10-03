@@ -31,7 +31,7 @@ const BackToTopFAB = () => {
           isVisible
             ? "opacity-100 translate-y-0 animate-bounce"
             : "opacity-0 translate-y-10"
-        } hover:bg-purple focus:outline-none focus:ring-2 focus:ring-darkPurple ${
+        } hover:bg-purple focus:outline-none ${
           isVisible && "animate-floating"
         }`}
         aria-label="Back to Top"
