@@ -56,6 +56,7 @@ export const tools = {
   octopusDeploy: "Octopus Deploy",
   kubernetes: "Kubernetes",
   oracleDb: "Oracle Database",
+  cosmosDb: "Azure Cosmos DB",
 };
 
 export interface NavItem {
@@ -174,6 +175,7 @@ export const experiences: ExperienceItem[] = [
       tools.figma,
       tools.azureDevOps,
       tools.flutter,
+      tools.cosmosDb,
     ],
   },
   {
