@@ -12,4 +12,11 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const remoteConfig = getRemoteConfig(app);
+const remoteConfig = getRemoteConfig(app);
+
+remoteConfig.settings = {
+  minimumFetchIntervalMillis: import.meta.env.VITE_ENV === 'development' ? 0 : 3600000,
+  fetchTimeoutMillis: 10000,
+};
+
+export { remoteConfig };
