@@ -32,17 +32,17 @@ const HeroContent = () => {
   
   return (
     <div className="flex flex-col lg:flex-row justify-center h-screen">
-      <div className="flex items-center lg:justify-start relative my-20 z-10 lg:w-[60%] ">
+      <div className="flex items-center justify-center xl:justify-start relative my-20 z-10 lg:w-[60%] ">
         <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center lg:justify-start">
           <TextGenerateEffect
-            className="text-center lg:text-left text-[40px] md:text-4xl lg:text-5xl"
+            className="text-center xl:text-left text-[40px] md:text-4xl lg:text-5xl"
             words={configValues.heading as string}
           />
-          <p className="text-center lg:text-left md:tracking-wider mb-10 text-sm md:text-lg lg:text-2xl text-white">
+          <p className="text-center xl:text-left md:tracking-wider mb-10 text-sm md:text-lg lg:text-2xl text-white">
             {configValues.subHeading as string}
           </p>
 
-          <div className="w-full justify-center lg:justify-start flex flex-col lg:flex-row gap-6">
+          <div className="w-full justify-center xl:justify-start flex flex-col xl:flex-row gap-6">
             <a href={configValues.resumeUrl as string} target="_blank" rel="noopener noreferrer">
               <MagicBorderButton
                 text={configValues.resumeCta as string}
@@ -61,7 +61,7 @@ const HeroContent = () => {
           </div>
         </div>
       </div>
-      <div className="relative hidden justify-end items-center lg:flex lg:w-[40%]">
+      <div className="relative hidden justify-end items-center xl:flex lg:w-[40%]">
         <Lottie options={defaultLottieOptions} height={640} width={640} />
         <img
           src={me}
