@@ -22,11 +22,11 @@ const Computer: React.FC<ComputerProps> = ({ isMobile }) => {
         castShadow
         shadow-mapSize={1024}
       />
-      <pointLight intensity={3} />
+      <pointLight intensity={1} />
       <primitive
         object={computer.scene}
         scale={isMobile ? 0.8 : 1}
-        position={isMobile ? [1, -3, -2.2] : [0, -2.5, -2.5]}
+        position={isMobile ? [1, -3, -2.2] : [0, -2.5, -2]}
         rotation={[-0.01, 0.5, -0.05]}
       />
     </mesh>
