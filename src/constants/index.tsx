@@ -19,6 +19,7 @@ import {
   github,
   portfolio,
   three,
+  amnestease,
 } from "../assets";
 
 export const tools = {
@@ -369,6 +370,14 @@ export const projects: Project[] = [
     img: portfolio,
     iconLists: [reactjs, tailwind, typescript, three, firebase],
     githubLink: "https://github.com/paulrsmithjnr/portfolio-website",
+  },
+  {
+    id: "projectTwo",
+    title: "AmnestEase",
+    description:
+      "A specialized customer management system developed for the National Water Commission (NWC) to efficiently track and manage customers interested in or applying for their amnesty program.",
+    img: amnestease,
+    iconLists: [reactjs, tailwind, typescript, firebase],
   },
 ];
 
