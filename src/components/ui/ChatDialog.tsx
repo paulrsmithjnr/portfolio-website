@@ -1,9 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "../../lib/utils";
-import { X, Send, Bot, User } from "lucide-react";
+import { X, Send, User } from "lucide-react";
 import { useRemoteConfig } from "../RemoteConfigComponent";
 import OpenAI from 'openai';
+import ReactMarkdown from 'react-markdown';
+import { paulgpt } from '../../assets';
 
 // Initialize OpenAI client
 const openai = new OpenAI({
@@ -31,7 +33,7 @@ const TypingIndicator: React.FC = () => {
       exit={{ opacity: 0, y: -10 }}
       className="flex items-start space-x-2"
     >
-      <Bot className="w-6 h-6 text-purple mt-1" />
+      <img src={paulgpt} alt="PaulGPT" className="w-8 h-8 rounded-full object-cover mt-1" />
       <div className="bg-black-200 rounded-lg px-4 py-3 max-w-[80%]">
         <div className="flex space-x-2">
           <motion.div
@@ -69,7 +71,7 @@ const MessageBubble: React.FC<{ message: Message; index: number }> = ({ message 
       )}
     >
       {message.role === "assistant" && (
-        <Bot className="w-6 h-6 text-purple mt-1" />
+        <img src={paulgpt} alt="PaulGPT" className="w-8 h-8 rounded-full object-cover mt-1" />
       )}
       <div
         className={cn(
@@ -77,7 +79,15 @@ const MessageBubble: React.FC<{ message: Message; index: number }> = ({ message 
           isUser ? "bg-darkPurple text-white" : "bg-black-200 text-white"
         )}
       >
-        <p className="text-sm">{message.content}</p>
+        {isUser ? (
+          <p className="text-sm">{message.content}</p>
+        ) : (
+          <div className="markdown-content text-sm prose prose-invert max-w-none prose-p:my-1 prose-pre:my-1 prose-ul:my-1 prose-ol:my-1 prose-li:my-0">
+            <ReactMarkdown>
+              {message.content}
+            </ReactMarkdown>
+          </div>
+        )}
       </div>
       {isUser && (
         <User className="w-6 h-6 text-purple mt-1" />
@@ -112,7 +122,32 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ isOpen, onClose, messages, setM
     try {
       const systemMessage = {
         role: "system" as const,
-        content: `You are PaulGPT, a helpful AI assistant that knows everything about Paul. Here's what you should know about Paul: ${config.paulGPTContext}. Always maintain a friendly and professional tone. If asked about something not covered in the context, politely mention that you don't have that information.`,
+        content: `You are PaulGPT, a friendly AI assistant that knows about Paul based STRICTLY on the context provided. Be conversational yet concise in your responses.
+
+Key guidelines:
+1. Context Verification:
+   - ALWAYS double-check the provided context before answering
+   - Ensure you have specific information about the topic in the context
+   - If any part of the question can't be answered with the context, clearly state which parts
+   - Never fill in gaps with assumptions
+
+2. Response Format:
+   - Be friendly and conversational
+   - Keep responses brief and focused - no unnecessary details
+   - Use clear, simple language
+   - Use markdown formatting
+   - Use **bold** for emphasis on key points
+   - Only use lists when presenting multiple items
+
+3. Accuracy Protocol:
+   - If you're not 100% certain, say "I don't have information about [specific topic]"
+   - For partial information, clearly state what you know and what you don't
+   - Never make assumptions or inferences beyond the provided context
+   - If a question is too broad, ask for clarification
+
+Here's what you know about Paul: ${config.paulGPTContext}
+
+Remember: Your responses must be based EXCLUSIVELY on the above context. If you're unsure about any detail, acknowledge the uncertainty rather than making assumptions.`,
       };
 
       const response = await openai.chat.completions.create({
@@ -132,7 +167,7 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ isOpen, onClose, messages, setM
       console.error("Error:", error);
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: "Sorry, I encountered an error. Please try again." },
+        { role: "assistant", content: "**Error:** Sorry, I encountered an error. Please try again." },
       ]);
     } finally {
       setIsLoading(false);
@@ -152,7 +187,7 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ isOpen, onClose, messages, setM
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-purple">
               <div className="flex items-center space-x-2">
-                <Bot className="w-5 h-5 text-purple" />
+                <img src={paulgpt} alt="PaulGPT" className="w-7 h-7 rounded-full object-cover" />
                 <span className="font-medium text-white">PaulGPT</span>
               </div>
               <button
@@ -173,7 +208,7 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ isOpen, onClose, messages, setM
                   className="space-y-4"
                 >
                   <div className="flex items-start space-x-2">
-                    <Bot className="w-6 h-6 text-purple mt-1" />
+                    <img src={paulgpt} alt="PaulGPT" className="w-8 h-8 rounded-full object-cover mt-1" />
                     <div className="bg-black-200 text-white rounded-lg px-4 py-2 max-w-[80%]">
                       <p className="text-sm font-medium mb-2">👋 Hello! I'm PaulGPT</p>
                       <p className="text-sm text-white/80">

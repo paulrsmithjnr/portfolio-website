@@ -119,9 +119,41 @@ module.exports = {
       screens: {
         xs: "450px",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            color: '#fff',
+            a: {
+              color: '#CBACF9',
+              '&:hover': {
+                color: '#570891',
+              },
+            },
+            strong: {
+              color: '#fff',
+            },
+            em: {
+              color: '#fff',
+            },
+            code: {
+              color: '#fff',
+              backgroundColor: 'rgba(0, 0, 0, 0.2)',
+              padding: '0.25rem',
+              borderRadius: '0.25rem',
+            },
+            'code::before': {
+              content: '""',
+            },
+            'code::after': {
+              content: '""',
+            },
+          },
+        },
+      },
     },
   },
   plugins: [
+    require('@tailwindcss/typography'),
     function ({ matchUtilities, theme }) {
       matchUtilities(
         {

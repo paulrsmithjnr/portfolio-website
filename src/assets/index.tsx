@@ -1,5 +1,6 @@
 export { default as wink } from "./wink.png";
 export { default as me } from "./me.png";
+export { default as paulgpt } from "./paulgpt.png";
 export { default as codebg } from "./codebg.svg";
 export { default as uiElement } from "./uiElement.svg";
 export { default as grid } from "./grid.svg";
