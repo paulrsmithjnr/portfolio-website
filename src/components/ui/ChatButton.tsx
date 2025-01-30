@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ChatDialog from "./ChatDialog";
 import { paulgpt } from '../../assets';
 
@@ -10,6 +10,20 @@ interface Message {
 export const ChatButton: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleClose = () => {
     setIsOpen(false);
@@ -20,7 +34,11 @@ export const ChatButton: React.FC = () => {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-10 left-10 flex items-center gap-2 bg-darkPurple text-white px-4 py-3 rounded-full shadow-lg transition-all duration-500 ease-in-out transform opacity-100 translate-y-0 hover:bg-purple focus:outline-none animate-floating ${isOpen ? 'bg-purple' : ''}`}
+        className={`fixed bottom-10 left-10 flex items-center gap-2 bg-darkPurple text-white px-4 py-3 rounded-full shadow-lg transition-transform duration-500 ease-in-out ${
+          isVisible ? "translate-y-0" : "hidden"
+        } hover:bg-purple focus:outline-none ${isOpen ? 'bg-purple' : ''} ${
+          isVisible && "animate-floating"
+        }`}
         aria-label="Chat with PaulGPT"
       >
         <img src={paulgpt} alt="PaulGPT" className="w-6 h-6 rounded-full object-cover" />
