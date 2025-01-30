@@ -8,6 +8,7 @@ import Technologies from "./components/Technologies";
 import Footer from "./components/Footer";
 import BackToTopFAB from "./components/ui/BackToTopFAB";
 import Projects from "./components/Projects";
+import ChatButton from "./components/ui/ChatButton";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
       <Projects />
       <Footer />
       <BackToTopFAB />
+      <ChatButton />
     </BrowserRouter>
   );
 };
