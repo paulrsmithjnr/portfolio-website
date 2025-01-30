@@ -11,6 +11,9 @@ module.exports = {
   mode: "jit",
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Space Grotesk', 'system-ui', 'sans-serif'],
+      },
       backgroundImage: {
         'black-gradient': 'linear-gradient(to right, #2c2c2c, #000000)',
       },

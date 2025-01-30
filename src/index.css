@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,9 +11,8 @@ html {
     @apply !scroll-smooth;
   }
   body {
-    @apply bg-black-100;
+    @apply bg-black-100 font-sans;
   }
-
 }
 
 @layer utilities {
