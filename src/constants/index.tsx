@@ -17,6 +17,7 @@ import {
   wink,
   linkedin,
   github,
+  instagram,
   portfolio,
   three,
   amnestease,
@@ -401,5 +402,11 @@ export const socials: SocialMedia[] = [
     name: "LinkedIn",
     img: linkedin,
     url: "https://www.linkedin.com/in/paulrsmithjnr/",
+  },
+  {
+    id: 3,
+    name: "Instagram",
+    img: instagram,
+    url: "https://www.instagram.com/paulrsmithjnr/profilecard/?igsh=dXh4bjU2eWk2MW1q",
   },
 ];

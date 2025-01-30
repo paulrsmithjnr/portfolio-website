@@ -26,4 +26,5 @@ export { default as amnestease } from "./project/amnestease.png";
 
 export { default as linkedin } from "./linkedin.svg";
 export { default as github } from "./github.svg";
+export { default as instagram } from "./instagram.svg";
 export { default as footerGrid } from "./footerGrid.svg";

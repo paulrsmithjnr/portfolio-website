@@ -38,7 +38,7 @@ const Stars: React.FC<StarsProps> = (props) => {
 
 const StarsCanvas: React.FC = () => {
   return (
-    <div className="w-full h-auto absolute inset-0 z-[0]">
+    <div className="w-full h-auto absolute inset-0 z-[-1]">
       <Canvas camera={{ position: [0, 0, 1] }}>
         <Suspense fallback={null}>
           <Stars />

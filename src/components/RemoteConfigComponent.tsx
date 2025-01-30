@@ -19,6 +19,7 @@ const defaultConfigValues: RemoteConfigValues = {
   resumeCta: "",
   resumeUrl: "",
   learnMoreCta: "",
+  contactMeCta: "",
   one: "",
   two: "",
   three: "",

@@ -1,14 +1,13 @@
 import StarsCanvas from "./canvas/Stars";
 import MagicBorderButton from "./ui/MagicBorderButton";
 import { Spotlight } from "./ui/Spotlight";
-import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import Lottie from "react-lottie";
 import animationData from "../constants/blob.json";
 import { me } from "../assets";
 import { SectionWrapper } from "./hoc";
-import { FaDownload, FaLocationArrow } from "react-icons/fa6";
+import { FaLocationArrow } from "react-icons/fa6";
 import { useRemoteConfig } from "./RemoteConfigComponent";
-
+import { socials } from "../constants";
 const defaultLottieOptions = {
   loop: true,
   autoplay: true,
@@ -29,45 +28,104 @@ const SpotlightGroup = () => (
 
 const HeroContent = () => {
   const configValues = useRemoteConfig();
-  
-  return (
-    <div className="flex flex-col lg:flex-row justify-center h-screen">
-      <div className="flex items-center justify-center xl:justify-start relative my-20 z-10 lg:w-[60%] ">
-        <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center lg:justify-start">
-          <TextGenerateEffect
-            className="text-center xl:text-left text-[40px] md:text-4xl lg:text-5xl"
-            words={configValues.heading as string}
-          />
-          <p className="text-center xl:text-left md:tracking-wider mb-10 text-sm md:text-lg lg:text-2xl text-white">
-            {configValues.subHeading as string}
-          </p>
 
-          <div className="w-full justify-center xl:justify-start flex flex-col xl:flex-row gap-6">
-            <a href="./Paul Smith.pdf" target="_blank" rel="noopener noreferrer">
-              <MagicBorderButton
-                text={configValues.resumeCta as string}
-                icon={<FaDownload />}
-                position="right"
-                fill={true}
-              />
-            </a>
-            <a href="#about">
-              <MagicBorderButton
-                text={configValues.learnMoreCta as string}
-                icon={<FaLocationArrow />}
-                position="right"
-              />
-            </a>
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen px-4">
+      {/* Profile and Info Section */}
+      <div className="flex items-center gap-2 mb-4">
+        {/* Profile Image with Lottie */}
+        <div className="relative w-[150px] h-[150px]">
+          <Lottie
+            options={defaultLottieOptions}
+            height={200}
+            width={200}
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          />
+          <img
+            src={me}
+            alt={me}
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 h-[120px] w-[120px]"
+          />
+        </div>
+
+        {/* Name and Location */}
+        <div className="flex flex-col items-start">
+          <h1 className="text-2xl font-bold text-white mb-1">Paul Smith</h1>
+          <div className="flex items-center gap-2">
+            <img
+              src="https://flagcdn.com/jm.svg"
+              alt="Jamaica Flag"
+              className="w-5"
+            />
+            <span className="text-gray-300 text-xs">Based in Jamaica</span>
           </div>
         </div>
       </div>
-      <div className="relative hidden justify-end items-center xl:flex lg:w-[40%]">
-        <Lottie options={defaultLottieOptions} height={640} width={640} />
-        <img
-          src={me}
-          alt={me}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 h-80"
-        />
+
+      {/* Title */}
+      <h2 className="text-[80px] leading-none font-bold text-white tracking-tighter mb-4 text-center">
+        <span className="text-purple">FULLSTACK</span>
+        <br />
+        SOFTWARE ENGINEER
+      </h2>
+
+      {/* Social Links */}
+      <div className="flex items-center justify-center gap-3 mb-12">
+        {socials.map((social) => (
+          <a
+            key={social.id}
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 rounded-full border border-white/10 hover:bg-white/5 transition-colors"
+          >
+            <img
+              src={social.img}
+              alt={social.name}
+              className="w-6 h-6"
+            />
+          </a>
+        ))}
+        <a
+          href="./Paul Smith.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-3 rounded-full border border-white/10 hover:bg-white/5 transition-colors group"
+        >
+          <svg
+            className="w-6 h-6 text-white group-hover:text-white transition-colors"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M13 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V9M13 2L20 9M13 2V9H20M12 18V13M9 15L12 18L15 15"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
+
+      {/* Contact Button */}
+      <div className="flex justify-center">
+        <a
+          className="mt-10"
+          href={`mailto:${configValues.emailAddress as string}`}
+        >
+          <MagicBorderButton
+            text={configValues.contactMeCta as string}
+            icon={<FaLocationArrow />}
+            position="right"
+          />
+        </a>
       </div>
     </div>
   );
