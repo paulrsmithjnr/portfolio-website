@@ -60,7 +60,7 @@ export const FloatingNav: React.FC<FloatingNavProps> = ({
             key={`link=${idx}`}
             href={navItem.link}
             className={cn(
-              "relative items-center flex space-x-1 text-neutral-50 hover:text-neutral-300"
+              "relative items-center flex space-x-1 text-neutral-50 hover:text-purple"
             )}
           >
             <span className="block sm:hidden">{navItem.icon}</span>
