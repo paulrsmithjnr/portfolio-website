@@ -1,12 +1,9 @@
 import StarsCanvas from "./canvas/Stars";
-import MagicBorderButton from "./ui/MagicBorderButton";
 import { Spotlight } from "./ui/Spotlight";
 import Lottie from "react-lottie";
 import animationData from "../constants/blob.json";
 import { me } from "../assets";
 import { SectionWrapper } from "./hoc";
-import { FaLocationArrow } from "react-icons/fa6";
-import { useRemoteConfig } from "./RemoteConfigComponent";
 import { socials } from "../constants";
 const defaultLottieOptions = {
   loop: true,
@@ -27,8 +24,6 @@ const SpotlightGroup = () => (
 );
 
 const HeroContent = () => {
-  const configValues = useRemoteConfig();
-
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-4">
       {/* Profile and Info Section */}
@@ -111,20 +106,6 @@ const HeroContent = () => {
               strokeLinejoin="round"
             />
           </svg>
-        </a>
-      </div>
-
-      {/* Contact Button */}
-      <div className="flex justify-center">
-        <a
-          className="mt-10"
-          href={`mailto:${configValues.emailAddress as string}`}
-        >
-          <MagicBorderButton
-            text={configValues.contactMeCta as string}
-            icon={<FaLocationArrow />}
-            position="right"
-          />
         </a>
       </div>
     </div>
