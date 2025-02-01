@@ -170,10 +170,10 @@ export const experiences: ExperienceItem[] = [
     startDate: "Apr 2023",
     endDate: "Present",
     points: [
-      "Collaborate cross-functionally with data scientists, business users, project managers, and engineers to deliver optimal solutions that meet user needs.",
-      "Support the entire application lifecycle for mobile applications, including design, testing, release, and maintenance, ensuring high-quality deliverables.",
-      "Develop software solutions by studying user requirements and analyzing system flows, leading to improved performance and user satisfaction.",
-      "Contribute to the GKOne App by implementing critical bug fixes and enhancements for core features, significantly improving overall application performance and user satisfaction, while also enhancing the user experience by adding new functionalities and integrations to broaden the app's capabilities."
+      "Enhance the GKOne App with critical bug fixes, performance improvements, and new feature integrations to improve user experience.",
+      "Collaborate with data scientists, business users, and engineers to deliver effective solutions.",
+      "Support the full application lifecycle, from design to maintenance, ensuring high-quality releases.",
+      "Analyze user needs and system workflows to develop efficient, user-centric solutions.",
     ],
     tools: [
       tools.aspNet,
@@ -196,9 +196,9 @@ export const experiences: ExperienceItem[] = [
     startDate: "Sep 2022",
     endDate: "Apr 2023",
     points: [
-      "Demonstrated leadership and mentorship skills by providing guidance and overseeing the work of interns, fostering their growth and professional development.",
-      "Conducted thorough code reviews to ensure high code quality and adherence to best practices, contributing to a more robust and maintainable codebase.",
-      "Ensured the seamless operation of enterprise applications by actively providing maintenance support, effectively resolving issues, and implementing timely updates to optimize performance and enhance user satisfaction.",
+      "Mentored interns, providing guidance to support their growth and development.",
+      "Conducted code reviews to maintain high quality and best practices.",
+      "Provided maintenance support, resolving issues, and optimizing performance for enterprise applications."
     ],
     tools: [
       tools.javaScript,
@@ -237,7 +237,9 @@ export const experiences: ExperienceItem[] = [
     startDate: "Jul 2022",
     endDate: "Apr 2023",
     points: [
-      "Ensured the seamless operation of enterprise applications by actively providing maintenance support, effectively resolving issues, and implementing timely updates to optimize performance and enhance user satisfaction.",
+      "Provided maintenance support to ensure the smooth operation of enterprise applications.",
+      "Resolved issues efficiently to minimize downtime and improve reliability.",
+      "Implemented timely updates to optimize performance and enhance user experience."
     ],
     tools: [
       tools.javaScript,
@@ -265,7 +267,9 @@ export const experiences: ExperienceItem[] = [
     startDate: "Jun 2021",
     endDate: "Sep 2022",
     points: [
-      "Enhanced functionality and user experience of e-commerce web and mobile applications through successful implementation of innovative features, while also expanding API endpoints to bolster overall system capabilities.",
+      "Implemented features to enhance e-commerce web and mobile applications.",
+      "Improved user experience through optimized functionality and design.",
+      "Expanded API endpoints to strengthen system capabilities and performance."
     ],
     tools: [
       tools.javaScript,
@@ -297,8 +301,9 @@ export const experiences: ExperienceItem[] = [
     startDate: "Feb 2021",
     endDate: "Apr 2021",
     points: [
-      "Added to the successful implementation, testing, debugging, and deployment of high-quality software solutions, ensuring their seamless integration into the production environment.",
-      "Compiled comprehensive documentation for various projects, enabling streamlined communication, and knowledge sharing for future reference.",
+      "Developed, tested, and deployed high-quality software solutions.",
+      "Ensured seamless integration of software into the production environment.",
+      "Created detailed documentation to support communication and knowledge sharing."
     ],
     tools: [
       tools.javaScript,
