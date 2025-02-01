@@ -27,14 +27,14 @@ const BackToTopFAB = () => {
     return (
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-10 right-10 bg-darkPurple text-white p-4 rounded-full shadow-lg transition-transform duration-500 ease-in-out ${
+        className={`fixed bottom-10 right-10 bg-darkPurple text-white p-3 rounded-full shadow-lg transition-transform duration-500 ease-in-out ${
           isVisible ? "translate-y-0" : "hidden"
         } hover:bg-purple focus:outline-none ${
           isVisible && "animate-floating"
         }`}
         aria-label="Back to Top"
       >
-        <FaChevronUp size={24} />
+        <FaChevronUp size={23} />
       </button>
     );
   };
