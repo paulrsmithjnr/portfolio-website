@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaChevronUp } from "react-icons/fa";
+import { ChevronUp } from "lucide-react";
 
 const BackToTopFAB = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -34,7 +34,7 @@ const BackToTopFAB = () => {
         }`}
         aria-label="Back to Top"
       >
-        <FaChevronUp size={23} />
+        <ChevronUp size={23} strokeWidth={2.5} />
       </button>
     );
   };
