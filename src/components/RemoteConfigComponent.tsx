@@ -40,6 +40,9 @@ const defaultConfigValues: RemoteConfigValues = {
   footerSectionCta: "",
   copyrightText: "",
   paulGPTContext: "",
+  aboutLine1: "",
+  aboutLine2: "",
+  aboutLine3: "",
 };
 
 const configKeys = Object.keys(defaultConfigValues) as Array<
