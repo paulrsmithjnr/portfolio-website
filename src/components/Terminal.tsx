@@ -343,12 +343,18 @@ const Terminal = () => {
     if (e.key === "Enter") {
       executeCommand(input);
       setInput("");
+    } else if (e.key === "Tab") {
+      e.preventDefault();
+      const commandNames = Object.keys(commands);
+      const inputLower = input.toLowerCase();
+      const matchingCommand = commandNames.find(cmd => cmd.toLowerCase().startsWith(inputLower));
+      
+      if (matchingCommand) {
+        setInput(matchingCommand);
+      }
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
-      if (
-        commandHistory.length > 0 &&
-        historyIndex < commandHistory.length - 1
-      ) {
+      if (commandHistory.length > 0 && historyIndex < commandHistory.length - 1) {
         const newIndex = historyIndex + 1;
         setHistoryIndex(newIndex);
         setInput(commandHistory[commandHistory.length - 1 - newIndex]);
@@ -423,6 +429,7 @@ const Terminal = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyPress}
+                onBlur={(e) => e.target.focus()}
                 className="flex-1 bg-transparent text-white outline-none border-none ml-2"
                 autoFocus
                 spellCheck={false}
