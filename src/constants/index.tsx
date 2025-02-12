@@ -21,6 +21,7 @@ import {
   portfolio,
   three,
   amnestease,
+  rocketrequest,
 } from "../assets";
 
 export const tools = {
@@ -383,6 +384,14 @@ export const projects: Project[] = [
     description:
       "A specialized customer management system developed for the National Water Commission (NWC) to efficiently track and manage customers interested in or applying for their amnesty program.",
     img: amnestease,
+    iconLists: [reactjs, tailwind, typescript, firebase],
+  },
+  {
+    id: "projectThree",
+    title: "RocketRequest",
+    description:
+      "A requisition management system developed for Rocketship Jamaica to streamline their procurement process by allowing administrators to generate secure, time-limited links for branches to submit and track their supply requests.",
+    img: rocketrequest,
     iconLists: [reactjs, tailwind, typescript, firebase],
   },
 ];

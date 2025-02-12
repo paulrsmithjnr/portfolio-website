@@ -20,7 +20,7 @@ const Projects = () => {
         highlightCount={2}
       />
       <div className="flex flex-wrap flex-row items-center justify-center mt-10 gap-7">
-        {projects.map((project) => (
+        {[...projects].reverse().map((project) => (
           <Tilt
             options={{
               max: 45,

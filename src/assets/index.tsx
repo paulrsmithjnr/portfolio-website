@@ -23,6 +23,7 @@ export { default as gkfg } from "./company/gkfg.png";
 export { default as portfolio } from "./project/portfolio.png";
 export { default as projectImgBg } from "./project/projectImgBg.png";
 export { default as amnestease } from "./project/amnestease.png";
+export { default as rocketrequest } from "./project/rocketrequest.png";
 
 export { default as linkedin } from "./linkedin.svg";
 export { default as github } from "./github.svg";
