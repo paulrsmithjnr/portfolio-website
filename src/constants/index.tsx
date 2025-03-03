@@ -330,6 +330,10 @@ export interface Technology {
 
 export const technologies: Technology[] = [
   {
+    name: tools.flutter,
+    icon: flutter,
+  },
+  {
     name: tools.typeScript,
     icon: typescript,
   },
@@ -352,10 +356,6 @@ export const technologies: Technology[] = [
   {
     name: tools.java,
     icon: java,
-  },
-  {
-    name: tools.flutter,
-    icon: flutter,
   },
 ];
 
