@@ -174,7 +174,6 @@ export const experiences: ExperienceItem[] = [
       "Enhance the GKOne App with critical bug fixes, performance improvements, and new feature integrations to improve user experience.",
       "Collaborate with data scientists, business users, and engineers to deliver effective solutions.",
       "Support the full application lifecycle, from design to maintenance, ensuring high-quality releases.",
-      "Analyze user needs and system workflows to develop efficient, user-centric solutions.",
     ],
     tools: [
       tools.aspNet,
