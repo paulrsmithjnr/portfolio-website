@@ -8,6 +8,7 @@ export { default as computerBg } from "./computerBg.png";
 
 export { default as typescript } from "./tech/typescript.png";
 export { default as reactjs } from "./tech/reactjs.png";
+export { default as expressjs } from "./tech/expressjs.png";
 export { default as tailwind } from "./tech/tailwind.png";
 export { default as firebase } from "./tech/firebase.svg";
 export { default as python } from "./tech/python.png";
@@ -24,6 +25,7 @@ export { default as portfolio } from "./project/portfolio.png";
 export { default as projectImgBg } from "./project/projectImgBg.png";
 export { default as amnestease } from "./project/amnestease.png";
 export { default as rocketrequest } from "./project/rocketrequest.png";
+export { default as cueslyio } from "./project/cueslyio.png";
 
 export { default as linkedin } from "./linkedin.svg";
 export { default as github } from "./github.svg";

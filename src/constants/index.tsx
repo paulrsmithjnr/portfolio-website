@@ -1,6 +1,7 @@
 import {
   typescript,
   reactjs,
+  expressjs,
   tailwind,
   firebase,
   python,
@@ -22,6 +23,7 @@ import {
   three,
   amnestease,
   rocketrequest,
+  cueslyio,
 } from "../assets";
 
 export const tools = {
@@ -43,7 +45,7 @@ export const tools = {
   flask: "Flask",
   fastApi: "FastAPI",
   springBoot: "Spring Boot",
-  aspNet: "ASP.NET (.NET Core)",
+  dotnet: ".NET",
   postgreSQL: "PostgreSQL",
   mySQL: "MySQL",
   firebase: "Firebase",
@@ -51,7 +53,7 @@ export const tools = {
   gitLab: "GitLab",
   bitbucket: "Bitbucket",
   aws: "AWS",
-  azure: "Azure",
+  azure: "Microsoft Azure",
   docker: "Docker",
   postman: "Postman",
   figma: "Figma",
@@ -171,21 +173,20 @@ export const experiences: ExperienceItem[] = [
     startDate: "Apr 2023",
     endDate: "Present",
     points: [
-      "Enhance the GKOne App with critical bug fixes, performance improvements, and new feature integrations to improve user experience.",
-      "Collaborate with data scientists, business users, and engineers to deliver effective solutions.",
-      "Support the full application lifecycle, from design to maintenance, ensuring high-quality releases.",
+      "Enhance the GK ONE App, a financial platform that modernized Jamaica’s digital economy by enabling remittances, bill payments, and prepaid card management, making financial services more accessible.",
+      "Developed the direct-to-bank registration flow, implemented direct-to-bank transfers for inbound remittances, and integrated mobile wallets within the GK ONE App, expanding digital payment options.",
+      "Continuously  enhance  the  remittance  and  onboarding  flows  through  bug  fixes,  performance  optimizations,  and  feature updates to streamline transactions and improve user experience. ",
+      "Collaborate within a cross-functional Scrum team of eighteen (18), consisting of software engineers, UI/UX designers, data scientists, marketing professionals, and business stakeholders, to deliver effective solutions for the GK ONE App."
     ],
     tools: [
-      tools.aspNet,
+      tools.flutter,
+      tools.dotnet,
       tools.firebase,
       tools.git,
-      tools.gitLab,
       tools.azure,
-      tools.postman,
-      tools.figma,
       tools.azureDevOps,
-      tools.flutter,
       tools.cosmosDb,
+      tools.postman,
     ],
   },
   {
@@ -392,6 +393,14 @@ export const projects: Project[] = [
       "A requisition management system developed for Rocketship Jamaica to streamline their procurement process by allowing administrators to generate secure, time-limited links for branches to submit and track their supply requests.",
     img: rocketrequest,
     iconLists: [reactjs, tailwind, typescript, firebase],
+  },
+  {
+    id: "projectFour",
+    title: "Cuesly.io (WIP)",
+    description:
+      "A step-by-step guidance Chrome extension that overlays directly on any website, making difficult tasks simple.",
+    img: cueslyio,
+    iconLists: [reactjs, expressjs, typescript, firebase],
   },
 ];
 
