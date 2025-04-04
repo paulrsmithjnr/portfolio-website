@@ -191,7 +191,7 @@ export const experiences: ExperienceItem[] = [
   },
   {
     id: 2,
-    title: "Software Developer",
+    title: "Mid-Senior Software Developer",
     companyName: "Speur Professional Services LLC.",
     icon: speur,
     startDate: "Sep 2022",
@@ -262,7 +262,7 @@ export const experiences: ExperienceItem[] = [
   },
   {
     id: 4,
-    title: "Junior Developer (Intern)",
+    title: "Software Developer",
     companyName: "Speur Professional Services LLC.",
     icon: speur,
     startDate: "Jun 2021",
@@ -296,7 +296,7 @@ export const experiences: ExperienceItem[] = [
   },
   {
     id: 5,
-    title: "Software Developer (Intern)",
+    title: "Software Developer",
     companyName: "Mona GeoInformatics Institute",
     icon: mgi,
     startDate: "Feb 2021",
@@ -398,7 +398,7 @@ export const projects: Project[] = [
     id: "projectFour",
     title: "Cuesly.io (WIP)",
     description:
-      "A step-by-step guidance Chrome extension that overlays directly on any website, making difficult tasks simple.",
+      "A Chrome extension powered by AI that delivers real-time, step-by-step visual guidance to help users seamlessly complete tasks on any website.",
     img: cueslyio,
     iconLists: [reactjs, expressjs, typescript, firebase],
   },

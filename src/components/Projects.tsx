@@ -8,7 +8,7 @@ import { useRemoteConfig } from "./RemoteConfigComponent";
 import { projects } from "../constants";
 import { SectionWrapper } from "./hoc";
 import { MovingBorderCard } from "./ui/MovingBorderCard";
-import { github, projectImgBg } from "../assets";
+import { github } from "../assets";
 
 const Projects = () => {
   const configValues = useRemoteConfig();
@@ -46,13 +46,8 @@ const Projects = () => {
                   className="w-full h-full overflow-hidden rounded-xl"
                   style={{ backgroundColor: "#13162D" }}
                 >
-                  <img src={projectImgBg} alt="background" />
+                  <img src={project.img} alt={project.title} />
                 </div>
-                <img
-                  src={project.img}
-                  alt={project.title}
-                  className="z-10 absolute bottom-0"
-                />
                 {project.githubLink && (
                   <a
                     href={project.githubLink}
