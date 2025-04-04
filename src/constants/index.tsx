@@ -26,44 +26,174 @@ import {
   cueslyio,
 } from "../assets";
 
-export const tools = {
-  javaScript: "JavaScript",
-  typeScript: "TypeScript",
-  python: "Python",
-  java: "Java",
-  cSharp: "C# (.NET)",
-  reactJs: "React.js",
-  ionic: "Ionic",
-  angular: "AngularJS",
-  vueJs: "Vue.js",
-  nuxtJs: "Nuxt.js",
-  bootstrap: "Bootstrap",
-  tailwindCss: "Tailwind CSS",
-  nodeJs: "Node.js",
-  express: "Express",
-  django: "Django",
-  flask: "Flask",
-  fastApi: "FastAPI",
-  springBoot: "Spring Boot",
-  dotnet: ".NET",
-  postgreSQL: "PostgreSQL",
-  mySQL: "MySQL",
-  firebase: "Firebase",
-  git: "Git",
-  gitLab: "GitLab",
-  bitbucket: "Bitbucket",
-  aws: "AWS",
-  azure: "Microsoft Azure",
-  docker: "Docker",
-  postman: "Postman",
-  figma: "Figma",
-  jira: "Jira",
-  azureDevOps: "Azure DevOps",
-  flutter: "Flutter",
-  octopusDeploy: "Octopus Deploy",
-  kubernetes: "Kubernetes",
-  oracleDb: "Oracle Database",
-  cosmosDb: "Azure Cosmos DB",
+export interface Tool {
+  name: string;
+  url: string;
+  icon?: string;
+}
+
+export const tools: { [key: string]: Tool } = {
+  javaScript: {
+    name: "JavaScript",
+    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+  },
+  typeScript: {
+    name: "TypeScript",
+    url: "https://www.typescriptlang.org",
+    icon: typescript,
+  },
+  python: {
+    name: "Python",
+    url: "https://www.python.org",
+    icon: python,
+  },
+  java: {
+    name: "Java",
+    url: "https://www.java.com",
+    icon: java,
+  },
+  cSharp: {
+    name: "C#",
+    url: "https://dotnet.microsoft.com/languages/csharp",
+  },
+  reactJs: {
+    name: "React.js",
+    url: "https://reactjs.org",
+    icon: reactjs,
+  },
+  ionic: {
+    name: "Ionic",
+    url: "https://ionicframework.com",
+  },
+  angular: {
+    name: "AngularJS",
+    url: "https://angular.io",
+  },
+  vueJs: {
+    name: "Vue.js",
+    url: "https://vuejs.org",
+  },
+  nuxtJs: {
+    name: "Nuxt.js",
+    url: "https://nuxtjs.org",
+  },
+  bootstrap: {
+    name: "Bootstrap",
+    url: "https://getbootstrap.com",
+  },
+  tailwindCss: {
+    name: "Tailwind CSS",
+    url: "https://tailwindcss.com",
+    icon: tailwind,
+  },
+  nodeJs: {
+    name: "Node.js",
+    url: "https://nodejs.org",
+  },
+  express: {
+    name: "Express",
+    url: "https://expressjs.com",
+    icon: expressjs,
+  },
+  django: {
+    name: "Django",
+    url: "https://www.djangoproject.com",
+  },
+  flask: {
+    name: "Flask",
+    url: "https://flask.palletsprojects.com",
+  },
+  fastApi: {
+    name: "FastAPI",
+    url: "https://fastapi.tiangolo.com",
+  },
+  springBoot: {
+    name: "Spring Boot",
+    url: "https://spring.io/projects/spring-boot",
+  },
+  dotnet: {
+    name: ".NET",
+    url: "https://dotnet.microsoft.com",
+  },
+  postgreSQL: {
+    name: "PostgreSQL",
+    url: "https://www.postgresql.org",
+  },
+  mySQL: {
+    name: "MySQL",
+    url: "https://www.mysql.com",
+  },
+  firebase: {
+    name: "Firebase",
+    url: "https://firebase.google.com",
+    icon: firebase,
+  },
+  git: {
+    name: "Git",
+    url: "https://git-scm.com",
+  },
+  gitLab: {
+    name: "GitLab",
+    url: "https://about.gitlab.com",
+  },
+  bitbucket: {
+    name: "Bitbucket",
+    url: "https://bitbucket.org",
+  },
+  aws: {
+    name: "AWS",
+    url: "https://aws.amazon.com",
+  },
+  azure: {
+    name: "Microsoft Azure",
+    url: "https://azure.microsoft.com",
+  },
+  docker: {
+    name: "Docker",
+    url: "https://www.docker.com",
+  },
+  postman: {
+    name: "Postman",
+    url: "https://www.postman.com",
+  },
+  figma: {
+    name: "Figma",
+    url: "https://www.figma.com",
+  },
+  jira: {
+    name: "Jira",
+    url: "https://www.atlassian.com/software/jira",
+  },
+  azureDevOps: {
+    name: "Azure DevOps",
+    url: "https://azure.microsoft.com/services/devops",
+  },
+  flutter: {
+    name: "Flutter",
+    url: "https://flutter.dev",
+    icon: flutter,
+  },
+  octopusDeploy: {
+    name: "Octopus Deploy",
+    url: "https://octopus.com",
+  },
+  kubernetes: {
+    name: "Kubernetes",
+    url: "https://kubernetes.io",
+  },
+  oracleDb: {
+    name: "Oracle Database",
+    url: "https://www.oracle.com/database",
+  },
+  cosmosDb: {
+    name: "Azure Cosmos DB",
+    url: "https://azure.microsoft.com/services/cosmos-db",
+  },
+  three: {
+    name: "Three.js",
+    url: "https://threejs.org",
+    icon: three,
+  },
 };
 
 export interface NavItem {
@@ -162,7 +292,7 @@ export interface ExperienceItem {
   startDate: string;
   endDate: string;
   points: string[];
-  tools: string[];
+  tools: Tool[];
 }
 export const experiences: ExperienceItem[] = [
   {
@@ -173,10 +303,10 @@ export const experiences: ExperienceItem[] = [
     startDate: "Apr 2023",
     endDate: "Present",
     points: [
-      "Enhance the GK ONE App, a financial platform that modernized Jamaica’s digital economy by enabling remittances, bill payments, and prepaid card management, making financial services more accessible.",
+      "Enhance the GK ONE App, a financial platform that modernized Jamaica's digital economy by enabling remittances, bill payments, and prepaid card management, making financial services more accessible.",
       "Developed the direct-to-bank registration flow, implemented direct-to-bank transfers for inbound remittances, and integrated mobile wallets within the GK ONE App, expanding digital payment options.",
       "Continuously  enhance  the  remittance  and  onboarding  flows  through  bug  fixes,  performance  optimizations,  and  feature updates to streamline transactions and improve user experience. ",
-      "Collaborate within a cross-functional Scrum team of eighteen (18), consisting of software engineers, UI/UX designers, data scientists, marketing professionals, and business stakeholders, to deliver effective solutions for the GK ONE App."
+      "Collaborate within a cross-functional Scrum team of eighteen (18), consisting of software engineers, UI/UX designers, data scientists, marketing professionals, and business stakeholders, to deliver effective solutions for the GK ONE App.",
     ],
     tools: [
       tools.flutter,
@@ -199,7 +329,7 @@ export const experiences: ExperienceItem[] = [
     points: [
       "Mentored interns, providing guidance to support their growth and development.",
       "Conducted code reviews to maintain high quality and best practices.",
-      "Provided maintenance support, resolving issues, and optimizing performance for enterprise applications."
+      "Provided maintenance support, resolving issues, and optimizing performance for enterprise applications.",
     ],
     tools: [
       tools.javaScript,
@@ -240,7 +370,7 @@ export const experiences: ExperienceItem[] = [
     points: [
       "Provided maintenance support to ensure the smooth operation of enterprise applications.",
       "Resolved issues efficiently to minimize downtime and improve reliability.",
-      "Implemented timely updates to optimize performance and enhance user experience."
+      "Implemented timely updates to optimize performance and enhance user experience.",
     ],
     tools: [
       tools.javaScript,
@@ -270,7 +400,7 @@ export const experiences: ExperienceItem[] = [
     points: [
       "Implemented features to enhance e-commerce web and mobile applications.",
       "Improved user experience through optimized functionality and design.",
-      "Expanded API endpoints to strengthen system capabilities and performance."
+      "Expanded API endpoints to strengthen system capabilities and performance.",
     ],
     tools: [
       tools.javaScript,
@@ -304,7 +434,7 @@ export const experiences: ExperienceItem[] = [
     points: [
       "Developed, tested, and deployed high-quality software solutions.",
       "Ensured seamless integration of software into the production environment.",
-      "Created detailed documentation to support communication and knowledge sharing."
+      "Created detailed documentation to support communication and knowledge sharing.",
     ],
     tools: [
       tools.javaScript,
@@ -323,40 +453,14 @@ export const experiences: ExperienceItem[] = [
   },
 ];
 
-export interface Technology {
-  name: string;
-  icon: string;
-}
-
-export const technologies: Technology[] = [
-  {
-    name: tools.flutter,
-    icon: flutter,
-  },
-  {
-    name: tools.typeScript,
-    icon: typescript,
-  },
-  {
-    name: tools.reactJs,
-    icon: reactjs,
-  },
-  {
-    name: tools.tailwindCss,
-    icon: tailwind,
-  },
-  {
-    name: tools.firebase,
-    icon: firebase,
-  },
-  {
-    name: tools.python,
-    icon: python,
-  },
-  {
-    name: tools.java,
-    icon: java,
-  },
+export const favouriteTechnologies: Tool[] = [
+  tools.flutter,
+  tools.typeScript,
+  tools.reactJs,
+  tools.tailwindCss,
+  tools.firebase,
+  tools.python,
+  tools.java,
 ];
 
 export interface Project {
@@ -364,7 +468,7 @@ export interface Project {
   title: string;
   description: string;
   img: string;
-  iconLists: string[];
+  tools: Tool[];
   githubLink?: string;
 }
 
@@ -375,7 +479,13 @@ export const projects: Project[] = [
     description:
       "A personal portfolio highlighting my skills as a full-stack developer, featuring responsive design, intuitive user experiences, and modern web technologies.",
     img: portfolio,
-    iconLists: [reactjs, tailwind, typescript, three, firebase],
+    tools: [
+      tools.reactJs,
+      tools.tailwindCss,
+      tools.typeScript,
+      tools.three,
+      tools.firebase,
+    ],
     githubLink: "https://github.com/paulrsmithjnr/portfolio-website",
   },
   {
@@ -384,7 +494,12 @@ export const projects: Project[] = [
     description:
       "A specialized customer management system developed for the National Water Commission (NWC) to efficiently track and manage customers interested in or applying for their amnesty program.",
     img: amnestease,
-    iconLists: [reactjs, tailwind, typescript, firebase],
+    tools: [
+      tools.reactJs,
+      tools.tailwindCss,
+      tools.typeScript,
+      tools.firebase,
+    ],
   },
   {
     id: "projectThree",
@@ -392,7 +507,12 @@ export const projects: Project[] = [
     description:
       "A requisition management system developed for Rocketship Jamaica to streamline their procurement process by allowing administrators to generate secure, time-limited links for branches to submit and track their supply requests.",
     img: rocketrequest,
-    iconLists: [reactjs, tailwind, typescript, firebase],
+    tools: [
+      tools.reactJs,
+      tools.tailwindCss,
+      tools.typeScript,
+      tools.firebase,
+    ],
   },
   {
     id: "projectFour",
@@ -400,7 +520,12 @@ export const projects: Project[] = [
     description:
       "A Chrome extension powered by AI that delivers real-time, step-by-step visual guidance to help users seamlessly complete tasks on any website.",
     img: cueslyio,
-    iconLists: [reactjs, expressjs, typescript, firebase],
+    tools: [
+      tools.reactJs,
+      tools.express,
+      tools.typeScript,
+      tools.firebase,
+    ],
   },
 ];
 

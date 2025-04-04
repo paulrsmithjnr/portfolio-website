@@ -9,6 +9,7 @@ import { projects } from "../constants";
 import { SectionWrapper } from "./hoc";
 import { MovingBorderCard } from "./ui/MovingBorderCard";
 import { github } from "../assets";
+import Tooltip from "./ui/Tooltip";
 
 const Projects = () => {
   const configValues = useRemoteConfig();
@@ -78,17 +79,23 @@ const Projects = () => {
 
               <div className="flex flex-row justify-between items-center mt-10 w-full">
                 <div className="flex flex-row items-center justify-center">
-                  {project.iconLists.map((icon, index) => (
-                    <div
-                      key={index}
-                      className="border border-white/[.2] rounded-full bg-black  w-8 h-8 flex justify-center items-center"
-                      style={{
-                        transform: `translateX(-${5 * index + 2}px)`,
-                      }}
-                    >
-                      <img src={icon} alt="icon" className="p-2" />
-                    </div>
-                  ))}
+                  {project.tools.map((tool, index) => {
+                    return (
+                      <Tooltip key={index} text={tool.name}>
+                        <a
+                          href={tool.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="border border-white/[.2] rounded-full bg-black w-8 h-8 flex justify-center items-center hover:border-purple transition-colors duration-300"
+                          style={{
+                            transform: `translateX(-${5 * index + 2}px)`,
+                          }}
+                        >
+                          <img src={tool?.icon ?? ""} alt={tool.name} className="p-2" />
+                        </a>
+                      </Tooltip>
+                    );
+                  })}
                 </div>
 
                 <a

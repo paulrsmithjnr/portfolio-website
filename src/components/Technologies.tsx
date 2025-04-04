@@ -1,4 +1,4 @@
-import { technologies } from "../constants";
+import { favouriteTechnologies } from "../constants";
 import { SectionWrapper } from "./hoc";
 import BallCanvas from "./canvas/Ball";
 import SectionHeader from "./SectionHeader";
@@ -14,13 +14,20 @@ const Technologies = () => {
       />
 
       <div className="mt-20 flex flex-row flex-wrap justify-center gap-10">
-        {technologies.map((technology) => (
+        {favouriteTechnologies.map((technology) => (
           <div
             className="w-32 h-32 flex flex-col items-center"
             key={technology.name}
           >
-            <BallCanvas icon={technology.icon} />
-            <span className="text-white text-center">{technology.name}</span>
+            <BallCanvas icon={technology.icon ?? ""} />
+            <a
+              href={technology.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white text-center"
+            >
+              {technology.name}
+            </a>
           </div>
         ))}
       </div>
