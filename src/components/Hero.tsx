@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import StarsCanvas from "./canvas/Stars";
 import { Spotlight } from "./ui/Spotlight";
 import Lottie from "react-lottie";
@@ -14,16 +15,29 @@ const defaultLottieOptions = {
   rendererSettings: { preserveAspectRatio: "xMidYMid slice" },
 };
 
-const SpotlightGroup = () => (
-  <>
-    <Spotlight
-      className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
-      fill="white"
-    />
-    <Spotlight className="top-10 left-full h-[80vh] w-[50vw]" fill="purple" />
-    <Spotlight className="top-28 left-80 h-[80vh] w-[50vw]" fill="blue" />
-  </>
-);
+const SpotlightGroup = () => {
+  const [opacity, setOpacity] = useState(0);
+
+  useEffect(() => {
+    setOpacity(1);
+  }, []);
+
+  return (
+    <div
+      style={{
+        opacity: opacity,
+        transition: "opacity 10s ease-in-out"
+      }}
+    >
+      <Spotlight
+        className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
+        fill="white"
+      />
+      <Spotlight className="top-10 left-full h-[80vh] w-[50vw]" fill="purple" />
+      <Spotlight className="top-28 left-80 h-[80vh] w-[50vw]" fill="blue" />
+    </div>
+  );
+};
 
 const HeroContent = () => {
   return (

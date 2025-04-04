@@ -1,4 +1,4 @@
-import { useState, useRef, Suspense } from "react";
+import { useState, useRef, Suspense, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Preload } from "@react-three/drei";
 import * as random from "maath/random/dist/maath-random.esm";
@@ -37,8 +37,20 @@ const Stars: React.FC<StarsProps> = (props) => {
 };
 
 const StarsCanvas: React.FC = () => {
+  const [opacity, setOpacity] = useState(0);
+
+  useEffect(() => {
+    setOpacity(1);
+  }, []);
+
   return (
-    <div className="w-full h-auto absolute inset-0 z-[-1]">
+    <div 
+      className="w-full h-auto absolute inset-0 z-[-1]"
+      style={{
+        opacity: opacity,
+        transition: "opacity 10s ease-in-out"
+      }}
+    >
       <Canvas camera={{ position: [0, 0, 1] }}>
         <Suspense fallback={null}>
           <Stars />

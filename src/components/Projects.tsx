@@ -56,7 +56,7 @@ const Projects = () => {
                     rel="noopener noreferrer"
                     className="absolute inset-0 z-10 flex justify-end m-2"
                   >
-                    <div className="bg-black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer">
+                    <div className="bg-black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:border hover:border-purple transition-colors duration-300">
                       <img
                         src={github}
                         alt="github icon"
