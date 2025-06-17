@@ -1,7 +1,7 @@
 "use client";
 
 import { Tilt } from "react-tilt";
-import { FaLocationArrow } from "react-icons/fa6";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 import SectionHeader from "./SectionHeader";
 import { useRemoteConfig } from "./RemoteConfigComponent";
@@ -13,6 +13,13 @@ import Tooltip from "./ui/Tooltip";
 
 const Projects = () => {
   const configValues = useRemoteConfig();
+
+  const handleCardClick = (projectId: string) => {
+    const projectUrl = configValues[projectId] as string;
+    if (projectUrl) {
+      window.open(projectUrl, '_blank', 'noopener,noreferrer');
+    }
+  };
 
   return (
     <div className="mb-32">
@@ -40,7 +47,8 @@ const Projects = () => {
                   "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
                 borderRadius: `calc(1.75rem* 0.96)`,
               }}
-              className="text-white border-slate-800 flex flex-col p-5"
+              className="text-white border-slate-800 flex flex-col p-5 cursor-pointer"
+              onClick={() => handleCardClick(project.id)}
             >
               <div className="relative w-full overflow-hidden">
                 <div
@@ -55,6 +63,7 @@ const Projects = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="absolute inset-0 z-10 flex justify-end m-2"
+                    onClick={(e) => e.stopPropagation()}
                   >
                     <div className="bg-black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:border hover:border-purple transition-colors duration-300">
                       <img
@@ -90,6 +99,7 @@ const Projects = () => {
                           style={{
                             transform: `translateX(-${5 * index + 2}px)`,
                           }}
+                          onClick={(e) => e.stopPropagation()}
                         >
                           <img src={tool?.icon ?? ""} alt={tool.name} className="p-2" />
                         </a>
@@ -103,11 +113,10 @@ const Projects = () => {
                   href={configValues[project.id] as string}
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="Open live site in new tab"
+                  onClick={(e) => e.stopPropagation()}
                 >
-                  <p className="text-purple">
-                    {configValues.checkSiteButtonText as string}
-                  </p>
-                  <FaLocationArrow className="ms-3" color="#CBACF9" />
+                  <FaExternalLinkAlt className="text-purple" size={16} />
                 </a>
               </div>
             </MovingBorderCard>
