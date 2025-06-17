@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "../../lib/utils";
 import { X, Send, User } from "lucide-react";
@@ -23,6 +23,12 @@ interface ChatDialogProps {
   onClose: () => void;
   messages: Message[];
   setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
+}
+
+interface RateLimitState {
+  messageCount: number;
+  resetTime: number | null;
+  isBlocked: boolean;
 }
 
 const TypingIndicator: React.FC = () => {
@@ -56,6 +62,8 @@ const TypingIndicator: React.FC = () => {
     </motion.div>
   );
 };
+
+
 
 const MessageBubble: React.FC<{ message: Message; index: number }> = ({ message }) => {
   const isUser = message.role === "user";
@@ -99,6 +107,12 @@ const MessageBubble: React.FC<{ message: Message; index: number }> = ({ message 
 const ChatDialog: React.FC<ChatDialogProps> = ({ isOpen, onClose, messages, setMessages }) => {
   const [input, setInput] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
+  const [rateLimitState, setRateLimitState] = useState<RateLimitState>({
+    messageCount: 0,
+    resetTime: null,
+    isBlocked: false
+  });
+  const [remainingTime, setRemainingTime] = useState(0);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const config = useRemoteConfig();
 
@@ -110,14 +124,86 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ isOpen, onClose, messages, setM
     scrollToBottom();
   }, [messages]);
 
+  // Rate limit timer effect
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    
+    if (rateLimitState.isBlocked && rateLimitState.resetTime) {
+      interval = setInterval(() => {
+        const now = Date.now();
+        const timeLeft = Math.max(0, Math.ceil((rateLimitState.resetTime! - now) / 1000));
+        
+        setRemainingTime(timeLeft);
+        
+        if (timeLeft <= 0) {
+          setRateLimitState({
+            messageCount: 0,
+            resetTime: null,
+            isBlocked: false
+          });
+          setRemainingTime(0);
+        }
+      }, 1000);
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [rateLimitState.isBlocked, rateLimitState.resetTime]);
+
+  const checkRateLimit = (): boolean => {
+    const now = Date.now();
+    
+    // If we're currently blocked, check if the block has expired
+    if (rateLimitState.isBlocked && rateLimitState.resetTime) {
+      if (now >= rateLimitState.resetTime) {
+        setRateLimitState({
+          messageCount: 0,
+          resetTime: null,
+          isBlocked: false
+        });
+        return true;
+      }
+      return false;
+    }
+    
+    // If we've reached the limit of 5 messages, block for 1 minute
+    if (rateLimitState.messageCount >= 5) {
+      const resetTime = now + 60000; // 1 minute from now
+      setRateLimitState({
+        messageCount: rateLimitState.messageCount,
+        resetTime: resetTime,
+        isBlocked: true
+      });
+      return false;
+    }
+    
+    return true;
+  };
+
+  const incrementMessageCount = () => {
+    setRateLimitState(prev => ({
+      ...prev,
+      messageCount: prev.messageCount + 1
+    }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
+
+    // Check rate limit before processing
+    if (!checkRateLimit()) {
+      return;
+    }
 
     const userMessage = { role: "user" as const, content: input.trim() };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setIsLoading(true);
+    
+    // Increment message count
+    incrementMessageCount();
 
     try {
       const systemMessage = {
@@ -157,7 +243,7 @@ Remember: Your responses must be based EXCLUSIVELY on the above context. If you'
         max_tokens: 500,
       });
 
-      if (response.choices[0].message.content) {
+      if (response.choices[0].message?.content) {
         setMessages((prev) => [...prev, { 
           role: "assistant", 
           content: response.choices[0].message.content || ""
@@ -173,6 +259,8 @@ Remember: Your responses must be based EXCLUSIVELY on the above context. If you'
       setIsLoading(false);
     }
   };
+
+  const messagesLeft = Math.max(0, 5 - rateLimitState.messageCount);
 
   return (
     <AnimatePresence>
@@ -220,6 +308,9 @@ Remember: Your responses must be based EXCLUSIVELY on the above context. If you'
                         <li>Projects and achievements</li>
                         <li>Education and background</li>
                       </ul>
+                      <p className="text-xs text-white/60 mt-3">
+                        📝 Note: You can send up to 5 messages at a time, then wait 1 minute for the next batch.
+                      </p>
                     </div>
                   </div>
                 </motion.div>
@@ -242,12 +333,13 @@ Remember: Your responses must be based EXCLUSIVELY on the above context. If you'
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask me anything..."
-                  className="flex-1 bg-black-200 text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple placeholder-white/50"
+                  placeholder={rateLimitState.isBlocked ? "Rate limited - please wait..." : "Ask me anything..."}
+                  disabled={rateLimitState.isBlocked}
+                  className="flex-1 bg-black-200 text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple placeholder-white/50 disabled:opacity-50 disabled:cursor-not-allowed"
                 />
                 <button
                   type="submit"
-                  disabled={isLoading}
+                  disabled={!input.trim() || isLoading || rateLimitState.isBlocked}
                   className={cn(
                     "p-2 rounded-lg bg-darkPurple text-white",
                     "hover:bg-purple transition-colors",
@@ -257,6 +349,19 @@ Remember: Your responses must be based EXCLUSIVELY on the above context. If you'
                   <Send size={20} />
                 </button>
               </div>
+              {(messagesLeft < 5 || rateLimitState.isBlocked) && (
+                <div className="text-xs text-white/60 mt-2">
+                  {rateLimitState.isBlocked ? (
+                    (() => {
+                      const minutes = Math.floor(remainingTime / 60);
+                      const seconds = remainingTime % 60;
+                      return `Rate limit reached. Please wait ${minutes}:${seconds.toString().padStart(2, '0')} before sending more messages.`;
+                    })()
+                  ) : (
+                    `${messagesLeft} message${messagesLeft !== 1 ? 's' : ''} remaining in this batch`
+                  )}
+                </div>
+              )}
             </form>
           </div>
         </motion.div>
