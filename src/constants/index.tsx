@@ -26,6 +26,9 @@ import {
   cueslyio,
   resend,
   qaportfolio,
+  jampackd,
+  jampackdadmin,
+  stripe,
 } from "../assets";
 
 export interface Tool {
@@ -200,6 +203,11 @@ export const tools: { [key: string]: Tool } = {
     name: "Resend",
     url: "https://resend.com",
     icon: resend,
+  },
+  stripe: {
+    name: "Stripe",
+    url: "https://stripe.com",
+    icon: stripe,
   },
 };
 
@@ -501,12 +509,7 @@ export const projects: Project[] = [
     description:
       "A specialized customer management system developed for the National Water Commission (NWC) to efficiently track and manage customers interested in or applying for their amnesty program.",
     img: amnestease,
-    tools: [
-      tools.reactJs,
-      tools.tailwindCss,
-      tools.typeScript,
-      tools.firebase,
-    ],
+    tools: [tools.reactJs, tools.tailwindCss, tools.typeScript, tools.firebase],
   },
   {
     id: "projectThree",
@@ -514,12 +517,7 @@ export const projects: Project[] = [
     description:
       "A requisition management system developed for Rocketship Jamaica to streamline their procurement process by allowing administrators to generate secure, time-limited links for branches to submit and track their supply requests.",
     img: rocketrequest,
-    tools: [
-      tools.reactJs,
-      tools.tailwindCss,
-      tools.typeScript,
-      tools.firebase,
-    ],
+    tools: [tools.reactJs, tools.tailwindCss, tools.typeScript, tools.firebase],
   },
   {
     id: "projectFour",
@@ -527,12 +525,7 @@ export const projects: Project[] = [
     description:
       "A Chrome extension powered by AI that delivers real-time, step-by-step visual guidance to help users seamlessly complete tasks on any website.",
     img: cueslyio,
-    tools: [
-      tools.reactJs,
-      tools.express,
-      tools.typeScript,
-      tools.firebase,
-    ],
+    tools: [tools.reactJs, tools.express, tools.typeScript, tools.firebase],
   },
   {
     id: "projectFive",
@@ -540,10 +533,36 @@ export const projects: Project[] = [
     description:
       "A modern, responsive portfolio website featuring a soft pink theme and smooth animations to showcase Lois-Anne Hall's skills and experience as a Software Quality Assurance Analyst.",
     img: qaportfolio,
+    tools: [tools.reactJs, tools.tailwindCss, tools.typeScript, tools.resend],
+  },
+  {
+    id: "projectSix",
+    title: "JamPack'd Care Packages",
+    description:
+      "E-commerce platform enabling customers to browse, purchase, and track orders for authentic Jamaican care packages and cultural products.",
+    img: jampackd,
     tools: [
       tools.reactJs,
       tools.tailwindCss,
       tools.typeScript,
+      tools.firebase,
+      tools.express,
+      tools.resend,
+      tools.stripe,
+    ],
+  },
+  {
+    id: "projectSeven",
+    title: "JamPack'd Admin Portal",
+    description:
+      "Business management dashboard for JamPack'd, providing comprehensive order processing, inventory management, customer analytics, and administrative controls for the e-commerce operation.",
+    img: jampackdadmin,
+    tools: [
+      tools.reactJs,
+      tools.tailwindCss,
+      tools.typeScript,
+      tools.firebase,
+      tools.express,
       tools.resend,
     ],
   },

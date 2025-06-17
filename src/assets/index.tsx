@@ -16,6 +16,7 @@ export { default as java } from "./tech/java.png";
 export { default as flutter } from "./tech/flutter.png";
 export { default as three } from "./tech/three.svg";
 export { default as resend } from "./tech/resend.png";
+export { default as stripe } from "./tech/stripe.png";
 
 export { default as mgi } from "./company/mgi.png";
 export { default as speur } from "./company/speur.png";
@@ -28,6 +29,8 @@ export { default as amnestease } from "./project/amnestease.png";
 export { default as rocketrequest } from "./project/rocketrequest.png";
 export { default as cueslyio } from "./project/cueslyio.png";
 export { default as qaportfolio } from "./project/qaportfolio.png";
+export { default as jampackd } from "./project/jampackd.png";
+export { default as jampackdadmin } from "./project/jampackdadmin.png";
 
 export { default as linkedin } from "./linkedin.svg";
 export { default as github } from "./github.svg";
