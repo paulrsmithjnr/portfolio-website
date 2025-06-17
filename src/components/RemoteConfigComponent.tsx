@@ -36,6 +36,7 @@ const defaultConfigValues: RemoteConfigValues = {
   projectTwo: "",
   projectThree: "",
   projectFour: "",
+  projectFive: "",
   checkSiteButtonText: "",
   footerSectionHeading: "",
   footerSectionSubHeading: "",

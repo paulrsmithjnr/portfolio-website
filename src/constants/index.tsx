@@ -24,6 +24,8 @@ import {
   amnestease,
   rocketrequest,
   cueslyio,
+  resend,
+  qaportfolio,
 } from "../assets";
 
 export interface Tool {
@@ -193,6 +195,11 @@ export const tools: { [key: string]: Tool } = {
     name: "Three.js",
     url: "https://threejs.org",
     icon: three,
+  },
+  resend: {
+    name: "Resend",
+    url: "https://resend.com",
+    icon: resend,
   },
 };
 
@@ -525,6 +532,19 @@ export const projects: Project[] = [
       tools.express,
       tools.typeScript,
       tools.firebase,
+    ],
+  },
+  {
+    id: "projectFive",
+    title: "QA Portfolio Website",
+    description:
+      "A modern, responsive portfolio website featuring a soft pink theme and smooth animations to showcase Lois-Anne Hall's skills and experience as a Software Quality Assurance Analyst.",
+    img: qaportfolio,
+    tools: [
+      tools.reactJs,
+      tools.tailwindCss,
+      tools.typeScript,
+      tools.resend,
     ],
   },
 ];
