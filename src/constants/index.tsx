@@ -521,7 +521,7 @@ export const projects: Project[] = [
   },
   {
     id: "projectFour",
-    title: "Cuesly.io (WIP)",
+    title: "Cuesly.io",
     description:
       "A Chrome extension powered by AI that delivers real-time, step-by-step visual guidance to help users seamlessly complete tasks on any website.",
     img: cueslyio,
