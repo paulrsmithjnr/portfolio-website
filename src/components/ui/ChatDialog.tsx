@@ -276,7 +276,7 @@ Remember: Your responses must be based EXCLUSIVELY on the above context. If you'
             <div className="flex items-center justify-between p-4 border-b border-purple">
               <div className="flex items-center space-x-2">
                 <img src={paulgpt} alt="PaulGPT" className="w-7 h-7 rounded-full object-cover" />
-                <span className="font-medium text-white">PaulGPT (Beta)</span>
+                <span className="font-medium text-white">PaulGPT</span>
               </div>
               <button
                 onClick={onClose}
