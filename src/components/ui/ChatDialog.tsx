@@ -219,7 +219,7 @@ Key guidelines:
 
 2. Response Format:
    - Be friendly and conversational
-   - Keep responses brief and focused - no unnecessary details
+   - Keep responses brief and focused (1-2 sentences unless the user asks for more details) - no unnecessary details
    - Use clear, simple language
    - Use markdown formatting
    - Use **bold** for emphasis on key points
@@ -237,7 +237,7 @@ Remember: Your responses must be based EXCLUSIVELY on the above context. If you'
       };
 
       const response = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
+        model: "gpt-4o-mini",
         messages: [systemMessage, ...messages, userMessage],
         temperature: 0.7,
         max_tokens: 500,
