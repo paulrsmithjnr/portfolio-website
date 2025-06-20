@@ -527,7 +527,7 @@ export const projects: Project[] = [
     description:
       "A Chrome extension powered by AI that delivers real-time, step-by-step visual guidance to help users seamlessly complete tasks on any website.",
     img: cueslyio,
-    tools: [tools.reactJs, tools.express, tools.typeScript, tools.firebase],
+    tools: [tools.reactJs, tools.express, tools.typeScript, tools.firebase, tools.resend],
   },
   {
     id: "projectFive",
