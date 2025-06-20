@@ -41,14 +41,16 @@ const SpotlightGroup = () => {
 };
 
 const HeroContent = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-4">
       {/* Profile and Info Section */}
       <motion.div 
         className="flex items-center gap-2 mb-4"
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
+        animate={{ opacity: imageLoaded ? 1 : 0, y: imageLoaded ? 0 : 20 }}
+        transition={{ duration: 0.8, delay: imageLoaded ? 0.2 : 0 }}
       >
         {/* Profile Image with Lottie */}
         <div className="relative w-[150px] h-[150px]">
@@ -67,6 +69,7 @@ const HeroContent = () => {
             src={me}
             alt={me}
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 h-[120px] w-[120px]"
+            onLoad={() => setImageLoaded(true)}
           />
         </div>
 
