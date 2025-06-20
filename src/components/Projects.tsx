@@ -96,11 +96,11 @@ const Projects = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="border border-white/[.2] rounded-full bg-black w-8 h-8 flex justify-center items-center hover:border-purple transition-colors duration-300"
-                          style={{
-                            transform: `translateX(-${5 * index + 2}px)`,
-                          }}
+                      style={{
+                        transform: `translateX(-${5 * index + 2}px)`,
+                      }}
                           onClick={(e) => e.stopPropagation()}
-                        >
+                    >
                           <img src={tool?.icon ?? ""} alt={tool.name} className="p-2" />
                         </a>
                       </Tooltip>
