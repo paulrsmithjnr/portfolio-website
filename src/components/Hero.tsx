@@ -5,7 +5,7 @@ import Lottie from "react-lottie";
 import animationData from "../constants/blob.json";
 import { me } from "../assets";
 import { SectionWrapper } from "./hoc";
-import { socials } from "../constants";
+import { socials, resumeUrl } from "../constants";
 import { Tilt } from "react-tilt";
 
 const defaultLottieOptions = {
@@ -108,7 +108,7 @@ const HeroContent = () => {
         ))}
         <Tilt className="relative">
           <a
-            href="./Paul Smith.pdf"
+            href={resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 rounded-full border border-white/10 hover:bg-white/5 transition-all duration-300 relative group overflow-hidden flex items-center justify-center"

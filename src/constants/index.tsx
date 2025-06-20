@@ -255,6 +255,8 @@ export interface AboutItem {
   secondImg?: string;
 }
 
+export const resumeUrl = "https://firebasestorage.googleapis.com/v0/b/portfolio-website-4f207.appspot.com/o/Paul%20Smith.pdf?alt=media";
+
 export const aboutItems: AboutItem[] = [
   {
     id: "one",
