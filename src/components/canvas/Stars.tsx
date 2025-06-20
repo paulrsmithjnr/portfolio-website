@@ -37,11 +37,23 @@ const Stars: React.FC<StarsProps> = (props) => {
 };
 
 const StarsCanvas: React.FC = () => {
+  const [shouldRender, setShouldRender] = useState(false);
   const [opacity, setOpacity] = useState(0);
 
   useEffect(() => {
-    setOpacity(1);
+    const timer = setTimeout(() => {
+      setShouldRender(true);
+      setTimeout(() => {
+        setOpacity(1);
+      }, 100);
+    }, 2000);
+
+    return () => clearTimeout(timer);
   }, []);
+
+  if (!shouldRender) {
+    return null;
+  }
 
   return (
     <div 
