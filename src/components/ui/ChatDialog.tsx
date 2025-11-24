@@ -1,17 +1,12 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, forwardRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "../../lib/utils";
 import { X, Send, User } from "lucide-react";
 import { useRemoteConfig } from "../RemoteConfigComponent";
-import OpenAI from 'openai';
 import ReactMarkdown from 'react-markdown';
 import { paulgpt } from '../../assets';
 
-// Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
-  dangerouslyAllowBrowser: true // Required for client-side usage
-});
+const PAULGPT_FUNCTION_URL = import.meta.env.VITE_PAULGPT_FUNCTION_URL;
 
 interface Message {
   role: "assistant" | "user";
@@ -65,11 +60,17 @@ const TypingIndicator: React.FC = () => {
 
 
 
-const MessageBubble: React.FC<{ message: Message; index: number }> = ({ message }) => {
+type MessageBubbleProps = {
+  message: Message;
+  index?: number;
+};
+
+const MessageBubble = forwardRef<HTMLDivElement, MessageBubbleProps>(({ message }, ref) => {
   const isUser = message.role === "user";
   
   return (
     <motion.div
+      ref={ref}
       initial={{ opacity: 0, x: isUser ? 20 : -20, y: 10 }}
       animate={{ opacity: 1, x: 0, y: 0 }}
       transition={{ duration: 0.3, delay: 0.1 }}
@@ -102,7 +103,9 @@ const MessageBubble: React.FC<{ message: Message; index: number }> = ({ message 
       )}
     </motion.div>
   );
-};
+});
+
+MessageBubble.displayName = "MessageBubble";
 
 const ChatDialog: React.FC<ChatDialogProps> = ({ isOpen, onClose, messages, setMessages }) => {
   const [input, setInput] = React.useState("");
@@ -206,50 +209,45 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ isOpen, onClose, messages, setM
     incrementMessageCount();
 
     try {
-      const systemMessage = {
-        role: "system" as const,
-        content: `You are PaulGPT, a friendly AI assistant that knows about Paul based STRICTLY on the context provided. Be conversational yet concise in your responses.
+      if (!PAULGPT_FUNCTION_URL) {
+        throw new Error("PaulGPT function URL is not configured.");
+      }
 
-Key guidelines:
-1. Context Verification:
-   - ALWAYS double-check the provided context before answering
-   - Ensure you have specific information about the topic in the context
-   - If any part of the question can't be answered with the context, clearly state which parts
-   - Never fill in gaps with assumptions
-
-2. Response Format:
-   - Be friendly and conversational
-   - Keep responses brief and focused (1-2 concise sentences unless the user asks for more details) - no unnecessary details
-   - Use clear, simple language
-   - Use markdown formatting
-   - Use **bold** for emphasis on key points
-   - Only use lists when presenting multiple items
-   - NEVER mention "context", "information provided", or reference how you obtained your knowledge
-
-3. Accuracy Protocol:
-   - If you're not 100% certain, say "I'm not sure about [specific topic], but you can contact Paul via email at paulrsmithjnr@gmail.com for more details if you wish."
-   - For partial information, clearly state what you know and what you don't
-   - Never make assumptions or inferences beyond the provided context
-   - If a question is too broad, ask for clarification
-
-Here's what you know about Paul: ${config.paulGPTContext}
-
-Remember: Your responses must be based EXCLUSIVELY on the above context. If you're unsure about any detail, acknowledge the uncertainty and offer the email contact option rather than making assumptions. Never reference context, sources, or how you know information.`,
+      const payload = {
+        messages: [...messages, userMessage],
+        context: config.paulGPTContext,
       };
 
-      const response = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
-        messages: [systemMessage, ...messages, userMessage],
-        temperature: 0.7,
-        max_tokens: 500,
+      const response = await fetch(PAULGPT_FUNCTION_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
       });
 
-      if (response.choices[0].message?.content) {
-        setMessages((prev) => [...prev, { 
-          role: "assistant", 
-          content: response.choices[0].message.content || ""
-        }]);
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(result?.error || "Failed to fetch PaulGPT response.");
       }
+
+      const assistantReply =
+        typeof result?.message === "string" && result.message.trim().length > 0
+          ? result.message.trim()
+          : null;
+
+      if (!assistantReply) {
+        throw new Error("Received an empty response from PaulGPT.");
+      }
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          content: assistantReply,
+        },
+      ]);
     } catch (error) {
       console.error("Error:", error);
       setMessages((prev) => [
