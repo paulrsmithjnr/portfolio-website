@@ -46,7 +46,7 @@ const StarsCanvas: React.FC = () => {
       setTimeout(() => {
         setOpacity(1);
       }, 100);
-    }, 2000);
+    }, 800);
 
     return () => clearTimeout(timer);
   }, []);
@@ -60,7 +60,7 @@ const StarsCanvas: React.FC = () => {
       className="w-full h-auto absolute inset-0 z-[-1]"
       style={{
         opacity: opacity,
-        transition: "opacity 10s ease-in-out"
+        transition: "opacity 4s ease-in-out"
       }}
     >
       <Canvas camera={{ position: [0, 0, 1] }}>
