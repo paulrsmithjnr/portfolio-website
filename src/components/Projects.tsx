@@ -1,7 +1,7 @@
 "use client";
 
 import { Tilt } from "react-tilt";
-import { FaExternalLinkAlt } from "react-icons/fa";
+import { FiArrowUpRight } from "react-icons/fi";
 
 import SectionHeader from "./SectionHeader";
 import { useRemoteConfig } from "./RemoteConfigComponent";
@@ -86,37 +86,42 @@ const Projects = () => {
                 </p>
               </div>
 
-              <div className="flex flex-row justify-between items-center mt-10 w-full">
-                <div className="flex flex-row items-center justify-center">
-                  {project.tools.map((tool, index) => {
-                    return (
-                      <Tooltip key={index} text={tool.name}>
-                        <a
-                          href={tool.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="border border-white/[.2] rounded-full bg-black w-8 h-8 flex justify-center items-center hover:border-purple transition-colors duration-300"
-                      style={{
-                        transform: `translateX(-${5 * index + 2}px)`,
-                      }}
-                          onClick={(e) => e.stopPropagation()}
-                    >
-                          <img src={tool?.icon ?? ""} alt={tool.name} className="p-2" />
-                        </a>
-                      </Tooltip>
-                    );
-                  })}
+              <div className="mt-10 w-full space-y-4">
+                <div className="flex flex-row items-center justify-between">
+                  <div className="flex flex-row items-center justify-center">
+                    {project.tools.map((tool, index) => {
+                      return (
+                        <Tooltip key={index} text={tool.name}>
+                          <a
+                            href={tool.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="border border-white/[.2] rounded-full bg-black w-8 h-8 flex justify-center items-center hover:border-purple transition-colors duration-300"
+                            style={{
+                              transform: `translateX(-${5 * index + 2}px)`,
+                            }}
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <img src={tool?.icon ?? ""} alt={tool.name} className="p-2" />
+                          </a>
+                        </Tooltip>
+                      );
+                    })}
+                  </div>
                 </div>
 
                 <a
-                  className="flex justify-center items-center"
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/30 px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:border-purple hover:bg-white/[0.08]"
                   href={configValues[project.id] as string}
                   target="_blank"
                   rel="noopener noreferrer"
                   title="Open live site in new tab"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <FaExternalLinkAlt className="text-purple" size={16} />
+                  <span>View Live</span>
+                  <span className="relative flex h-6 w-6 items-center justify-center overflow-hidden rounded-full bg-white/10 transition-all duration-300 group-hover:bg-purple/20">
+                    <FiArrowUpRight className="text-purple transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" size={14} />
+                  </span>
                 </a>
               </div>
             </MovingBorderCard>

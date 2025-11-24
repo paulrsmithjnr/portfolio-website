@@ -30,6 +30,7 @@ export { default as rocketrequest } from "./project/rocketrequest.png";
 export { default as cueslyio } from "./project/cueslyio.png";
 export { default as qaportfolio } from "./project/qaportfolio.png";
 export { default as jampackd } from "./project/jampackd.png";
+export { default as jampackdmobile } from "./project/jampackdmobile.png";
 export { default as jampackdadmin } from "./project/jampackdadmin.png";
 
 export { default as linkedin } from "./linkedin.svg";

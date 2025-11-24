@@ -27,6 +27,7 @@ import {
   resend,
   qaportfolio,
   jampackd,
+  jampackdmobile,
   jampackdadmin,
   stripe,
 } from "../assets";
@@ -541,7 +542,7 @@ export const projects: Project[] = [
     id: "projectSix",
     title: "JamPack'd Care Packages",
     description:
-      "E-commerce platform enabling customers to browse, purchase, and track orders for authentic Jamaican care packages and cultural products.",
+      "A responsive e-commerce experience that helps the Jamaican diaspora and culture lovers discover authentic snacks, customize care-package bundles, place orders, and follow deliveries from any device.",
     img: jampackd,
     tools: [
       tools.reactJs,
@@ -566,6 +567,21 @@ export const projects: Project[] = [
       tools.firebase,
       tools.express,
       tools.resend,
+      tools.stripe,
+    ],
+  },
+  {
+    id: "projectEight",
+    title: "JamPack'd Mobile",
+    description:
+      "A cross-platform mobile app built for iOS and Android that lets the Jamaican diaspora and anyone who loves Jamaican culture easily shop authentic snacks, track orders, and explore curated care-package bundles.",
+    img: jampackdmobile,
+    tools: [
+      tools.flutter,
+      tools.firebase,
+      tools.express,
+      tools.resend,
+      tools.stripe,
     ],
   },
 ];
