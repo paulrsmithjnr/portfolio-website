@@ -4,6 +4,8 @@ import {
   expressjs,
   tailwind,
   firebase,
+  html,
+  css,
   python,
   java,
   flutter,
@@ -24,6 +26,8 @@ import {
   amnestease,
   rocketrequest,
   cueslyio,
+  dynadm,
+  dynadmextension,
   resend,
   qaportfolio,
   jampackd,
@@ -42,6 +46,16 @@ export const tools: { [key: string]: Tool } = {
   javaScript: {
     name: "JavaScript",
     url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+  },
+  html: {
+    name: "HTML5",
+    url: "https://developer.mozilla.org/en-US/docs/Web/HTML",
+    icon: html,
+  },
+  css: {
+    name: "CSS3",
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    icon: css,
   },
   typeScript: {
     name: "TypeScript",
@@ -583,6 +597,29 @@ export const projects: Project[] = [
       tools.resend,
       tools.stripe,
     ],
+  },
+  {
+    id: "projectNine",
+    title: "DynaDM Web App",
+    description:
+      "A campaign management dashboard for DynaDM that lets teams build Instagram and TikTok DM outreach, organize prospect lists, and track sends with pacing limits, working hours, and Stripe-powered plans.",
+    img: dynadm,
+    tools: [
+      tools.reactJs,
+      tools.tailwindCss,
+      tools.typeScript,
+      tools.firebase,
+      tools.stripe,
+      tools.resend,
+    ],
+  },
+  {
+    id: "projectTen",
+    title: "DynaDM Chrome Extension",
+    description:
+      "A Chrome extension that runs DynaDM automation in the browser, scraping Instagram and TikTok prospects, sending DMs, and syncing campaign status back to the web app in real time.",
+    img: dynadmextension,
+    tools: [tools.typeScript, tools.html, tools.css, tools.firebase],
   },
 ];
 
