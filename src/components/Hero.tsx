@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import StarsCanvas from "./canvas/Stars";
 import { Spotlight } from "./ui/Spotlight";
-import Lottie from "react-lottie";
+import Lottie from "lottie-react";
 import animationData from "../constants/blob.json";
 import { me } from "../assets";
 import { SectionWrapper } from "./hoc";
@@ -9,13 +9,6 @@ import { socials, resumeUrl } from "../constants";
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 import ScrollDownIndicator from "./ui/ScrollDownIndicator";
-
-const defaultLottieOptions = {
-  loop: true,
-  autoplay: true,
-  animationData: animationData,
-  rendererSettings: { preserveAspectRatio: "xMidYMid slice" },
-};
 
 const SpotlightGroup = () => {
   const [opacity, setOpacity] = useState(0);
@@ -55,17 +48,13 @@ const HeroContent = () => {
       >
         {/* Profile Image with Lottie */}
         <div className="relative w-[150px] h-[150px]">
-          <Lottie
-            options={defaultLottieOptions}
-            height={200}
-            width={200}
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-            }}
-          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Lottie
+              animationData={animationData}
+              loop
+              className="h-[200px] w-[200px]"
+            />
+          </div>
           <img
             src={me}
             alt={me}

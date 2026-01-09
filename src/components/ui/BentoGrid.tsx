@@ -5,7 +5,7 @@ import { useState } from "react";
 import animationData from "../../constants/confetti.json";
 import { BackgroundGradientAnimation } from "./BackgroundGradientAnimation";
 import GlobeComponent from "./GlobeComponent";
-import Lottie from "react-lottie";
+import Lottie from "lottie-react";
 import MagicBorderButton from "./MagicBorderButton";
 import { IoCopyOutline } from "react-icons/io5";
 import StarsCanvas from "../canvas/Stars";
@@ -52,15 +52,6 @@ export const BentoGridItem = ({
   const configValues = useRemoteConfig();
 
   const [copied, setCopied] = useState(false);
-
-  const defaultOptions = {
-    loop: copied,
-    autoplay: copied,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
 
   const handleCopy = () => {
     navigator.clipboard.writeText(configValues.emailAddress as string);
@@ -155,7 +146,12 @@ export const BentoGridItem = ({
           {id === "six" && (
             <div className="mt-5 relative">
               <div className="absolute -bottom-5 right-0">
-                <Lottie options={defaultOptions} height={200} width={400} />
+                <Lottie
+                  animationData={animationData}
+                  loop={copied}
+                  autoplay={copied}
+                  className="h-[200px] w-[400px]"
+                />
               </div>
 
               <MagicBorderButton

@@ -30,6 +30,7 @@ const Projects = () => {
       <div className="flex flex-wrap flex-row items-center justify-center mt-10 gap-7">
         {[...projects].reverse().map((project) => (
           <Tilt
+            key={project.id}
             options={{
               max: 45,
               scale: 1,
@@ -38,7 +39,6 @@ const Projects = () => {
             className="sm:w-[360px] w-full"
           >
             <MovingBorderCard
-              key={project.id}
               duration={Math.floor(Math.random() * 10000) + 10000}
               borderRadius="1.75rem"
               style={{
