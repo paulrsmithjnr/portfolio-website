@@ -8,6 +8,7 @@ import { SectionWrapper } from "./hoc";
 import { socials, resumeUrl } from "../constants";
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
+import ScrollDownIndicator from "./ui/ScrollDownIndicator";
 
 const defaultLottieOptions = {
   loop: true,
@@ -44,7 +45,7 @@ const HeroContent = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-4">
+    <div className="relative flex w-full flex-col items-center justify-center min-h-screen px-4 pb-20">
       {/* Profile and Info Section */}
       <motion.div 
         className="flex items-center gap-2 mb-4"
@@ -169,6 +170,8 @@ const HeroContent = () => {
           </Tilt>
         </motion.div>
       </motion.div>
+
+      <ScrollDownIndicator />
     </div>
   );
 };
