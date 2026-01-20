@@ -1,17 +1,10 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { FloatingNav } from "./components/ui/FloatingNav";
-import { navItems } from "./constants";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Experience from "./components/Experience";
-import Technologies from "./components/Technologies";
-import Footer from "./components/Footer";
-import BackToTopFAB from "./components/ui/BackToTopFAB";
-import Projects from "./components/Projects";
-import ChatButton from "./components/ui/ChatButton";
 import Terminal from "./components/Terminal";
 import TerminalToggle from "./components/ui/TerminalToggle";
+import Home from "./pages/Home";
+import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
 
 const App = () => {
   const [isTerminalMode, setIsTerminalMode] = useState(false);
@@ -21,7 +14,7 @@ const App = () => {
   };
 
   if (isTerminalMode) {
-  return (
+    return (
       <>
         <Terminal />
         <TerminalToggle isTerminalMode={isTerminalMode} onToggle={toggleTerminalMode} />
@@ -30,18 +23,36 @@ const App = () => {
   }
       
   return (
-        <BrowserRouter>
-          <FloatingNav navItems={navItems} />
-          <Hero />
-          <About />
-          <Experience />
-          <Technologies />
-          <Projects />
-          <Footer />
-          <BackToTopFAB />
-          <ChatButton />
-      <TerminalToggle isTerminalMode={isTerminalMode} onToggle={toggleTerminalMode} />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+      <RouteAwareTerminalToggle
+        isTerminalMode={isTerminalMode}
+        onToggle={toggleTerminalMode}
+      />
     </BrowserRouter>
+  );
+};
+
+const RouteAwareTerminalToggle = ({
+  isTerminalMode,
+  onToggle,
+}: {
+  isTerminalMode: boolean;
+  onToggle: () => void;
+}) => {
+  const location = useLocation();
+
+  if (location.pathname !== "/") {
+    return null;
+  }
+
+  return (
+    <TerminalToggle isTerminalMode={isTerminalMode} onToggle={onToggle} />
   );
 };
 
