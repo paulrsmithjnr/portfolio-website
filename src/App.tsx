@@ -5,6 +5,7 @@ import TerminalToggle from "./components/ui/TerminalToggle";
 import Home from "./pages/Home";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
+import Support from "./pages/Support";
 
 const App = () => {
   const [isTerminalMode, setIsTerminalMode] = useState(false);
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="/support" element={<Support />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <RouteAwareTerminalToggle

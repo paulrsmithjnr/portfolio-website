@@ -8,7 +8,10 @@ const Privacy = () => {
       meta={[
         { label: "Effective date", value: "January 20, 2026" },
         { label: "Developer", value: "Paul Smith" },
-        { label: "Contact", value: "paulrsmithjnr@gmail.com" },
+        {
+          label: "Contact",
+          value: <a href="mailto:paulrsmithjnr@gmail.com">paulrsmithjnr@gmail.com</a>,
+        },
       ]}
       sections={[
         {
@@ -129,7 +132,12 @@ const Privacy = () => {
         },
         {
           title: "12. Contact us",
-          body: "Questions or requests: paulrsmithjnr@gmail.com.",
+          body: (
+            <>
+              Questions or requests:{" "}
+              <a href="mailto:paulrsmithjnr@gmail.com">paulrsmithjnr@gmail.com</a>.
+            </>
+          ),
         },
       ]}
     />

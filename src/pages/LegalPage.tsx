@@ -1,23 +1,24 @@
 import { NavLink, Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import type { ReactNode } from "react";
 import { Spotlight } from "../components/ui/Spotlight";
 import { cn } from "../lib/utils";
 
 interface LegalSection {
-  title: string;
-  body: string;
+  title?: string;
+  body: ReactNode;
   bullets?: string[];
 }
 
 interface LegalMetaItem {
   label: string;
-  value: string;
+  value: ReactNode;
 }
 
 interface LegalPageProps {
   title: string;
   subtitle?: string;
-  lastUpdated: string;
+  lastUpdated?: string;
   sections: LegalSection[];
   meta?: LegalMetaItem[];
 }
@@ -63,14 +64,15 @@ const LegalPage = ({
 
       <div className="relative z-10">
         <header className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-6 pb-4 pt-10 md:flex-row md:items-center md:justify-end">
-          <nav className="flex flex-wrap items-center gap-3 text-[0.65rem] uppercase tracking-[0.3em] text-white/60">
-            {[
-              { label: "Terms", to: "/terms" },
-              { label: "Privacy", to: "/privacy" },
-            ].map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
+            <nav className="flex flex-wrap items-center gap-3 text-[0.65rem] uppercase tracking-[0.3em] text-white/60">
+              {[
+                { label: "Terms", to: "/terms" },
+                { label: "Privacy", to: "/privacy" },
+                { label: "Support", to: "/support" },
+              ].map((link) => (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
                 className={({ isActive }) =>
                   cn(
                     "rounded-full border border-transparent px-3 py-1 transition-colors",
@@ -100,9 +102,9 @@ const LegalPage = ({
                 )}
                 {meta && meta.length > 0 && (
                   <div className="mt-5 flex flex-col gap-2 text-sm text-white-200">
-                    {meta.map((item) => (
+                    {meta.map((item, index) => (
                       <div
-                        key={`${item.label}-${item.value}`}
+                        key={`${item.label}-${index}`}
                         className="flex flex-wrap items-center gap-2"
                       >
                         <span className="text-white/60">{item.label}:</span>
@@ -111,18 +113,20 @@ const LegalPage = ({
                     ))}
                   </div>
                 )}
-                <div className="mt-6 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[0.65rem] uppercase tracking-[0.3em] text-white/70">
-                  Updated {lastUpdated}
-                </div>
+                {lastUpdated && (
+                  <div className="mt-6 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[0.65rem] uppercase tracking-[0.3em] text-white/70">
+                    Updated {lastUpdated}
+                  </div>
+                )}
               </div>
             </div>
 
             <div className="mt-10 h-px w-full bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
             <div className="prose prose-invert mt-10 max-w-none">
-              {sections.map((section) => (
-                <section key={section.title}>
-                  <h2>{section.title}</h2>
+              {sections.map((section, index) => (
+                <section key={`section-${index}`}>
+                  {section.title && <h2>{section.title}</h2>}
                   <p>{section.body}</p>
                   {section.bullets && (
                     <ul>
@@ -153,6 +157,13 @@ const LegalPage = ({
                 className="transition-colors hover:text-white"
               >
                 Privacy
+              </Link>
+              <span className="text-white/20">/</span>
+              <Link
+                to="/support"
+                className="transition-colors hover:text-white"
+              >
+                Support
               </Link>
             </div>
           </div>

@@ -8,7 +8,10 @@ const Terms = () => {
       meta={[
         { label: "Effective date", value: "January 20, 2026" },
         { label: "Developer", value: "Paul Smith" },
-        { label: "Contact", value: "paulrsmithjnr@gmail.com" },
+        {
+          label: "Contact",
+          value: <a href="mailto:paulrsmithjnr@gmail.com">paulrsmithjnr@gmail.com</a>,
+        },
         { label: "Governing law", value: "Jamaica" },
       ]}
       sections={[
@@ -107,7 +110,12 @@ const Terms = () => {
         },
         {
           title: "15. Contact",
-          body: "Questions about these Terms: paulrsmithjnr@gmail.com.",
+          body: (
+            <>
+              Questions about these Terms:{" "}
+              <a href="mailto:paulrsmithjnr@gmail.com">paulrsmithjnr@gmail.com</a>.
+            </>
+          ),
         },
       ]}
     />
