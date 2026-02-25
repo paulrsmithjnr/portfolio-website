@@ -33,6 +33,7 @@ import {
   jampackd,
   jampackdmobile,
   jampackdadmin,
+  golddigger,
   stripe,
 } from "../assets";
 
@@ -620,6 +621,22 @@ export const projects: Project[] = [
       "A Chrome extension that runs DynaDM automation in the browser, scraping Instagram and TikTok prospects, sending DMs, and syncing campaign status back to the web app in real time.",
     img: dynadmextension,
     tools: [tools.typeScript, tools.html, tools.css, tools.firebase],
+  },
+  {
+    id: "projectEleven",
+    title: "GoldDigger",
+    description:
+      "A trading companion for Deriv synthetic indices with manual and automated execution modes, subscription-gated premium features, and admin tooling.",
+    img: golddigger,
+    tools: [
+      tools.reactJs,
+      tools.tailwindCss,
+      tools.typeScript,
+      tools.firebase,
+      tools.express,
+      tools.stripe,
+      tools.resend,
+    ],
   },
 ];
 
