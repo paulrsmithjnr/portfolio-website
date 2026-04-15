@@ -68,11 +68,11 @@ const HeroContent = () => {
           <h1 className="text-2xl font-bold text-white mb-1">Paul Smith</h1>
           <div className="flex items-center gap-2">
             <img
-              src="https://flagcdn.com/jm.svg"
-              alt="Jamaica Flag"
+              src="https://flagcdn.com/us.svg"
+              alt="United States Flag"
               className="w-5"
             />
-            <span className="text-gray-300 text-xs">Based in Jamaica</span>
+            <span className="text-gray-300 text-xs">Based in the United States</span>
           </div>
         </div>
       </motion.div>

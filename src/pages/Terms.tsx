@@ -4,15 +4,15 @@ const Terms = () => {
   return (
     <LegalPage
       title="Terms of Service"
-      lastUpdated="January 20, 2026"
+      lastUpdated="April 14, 2026"
       meta={[
-        { label: "Effective date", value: "January 20, 2026" },
+        { label: "Effective date", value: "April 14, 2026" },
         { label: "Developer", value: "Paul Smith" },
         {
           label: "Contact",
           value: <a href="mailto:paulrsmithjnr@gmail.com">paulrsmithjnr@gmail.com</a>,
         },
-        { label: "Governing law", value: "Jamaica" },
+        { label: "Governing law", value: "New Jersey, United States" },
       ]}
       sections={[
         {
@@ -106,7 +106,7 @@ const Terms = () => {
         {
           title: "14. Governing law",
           body:
-            "These Terms are governed by the laws of Jamaica, without regard to conflict of laws principles.",
+            "These Terms are governed by the laws of the State of New Jersey, United States, without regard to conflict of laws principles.",
         },
         {
           title: "15. Contact",
