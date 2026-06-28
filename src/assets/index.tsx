@@ -37,6 +37,7 @@ export { default as jampackd } from "./project/jampackd.png";
 export { default as jampackdmobile } from "./project/jampackdmobile.png";
 export { default as jampackdadmin } from "./project/jampackdadmin.png";
 export { default as golddigger } from "./project/golddigger.png";
+export { default as outside } from "./project/outside.png";
 
 export { default as linkedin } from "./linkedin.svg";
 export { default as github } from "./github.svg";

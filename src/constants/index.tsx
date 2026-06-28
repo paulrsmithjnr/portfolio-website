@@ -34,6 +34,7 @@ import {
   jampackdmobile,
   jampackdadmin,
   golddigger,
+  outside,
   stripe,
 } from "../assets";
 
@@ -637,6 +638,14 @@ export const projects: Project[] = [
       tools.stripe,
       tools.resend,
     ],
+  },
+  {
+    id: "projectTwelve",
+    title: "Outside! Mobile App",
+    description:
+      "A cross-platform mobile app for discovering fun things to do in Jamaica, with ideas matched to your vibe, budget, and parish across date nights, hidden gems, group outings, and at-home activities.",
+    img: outside,
+    tools: [tools.flutter, tools.firebase],
   },
 ];
 
