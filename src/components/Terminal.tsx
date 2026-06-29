@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { useRemoteConfig } from "./RemoteConfigComponent";
 import { projects, socials } from "../constants";
+import { normalizeProjectLinks } from "../lib/projectLinks";
 
 interface Command {
   name: string;
@@ -129,7 +130,7 @@ const Terminal = () => {
       name: "projects",
       description: "view projects that I've coded",
       execute: (args: string) => {
-        const [subCommand, projectNumber] = args.trim().split(" ");
+        const [subCommand, projectNumber, linkNumber] = args.trim().split(" ");
 
         // Handle 'projects go' command
         if (subCommand === "go") {
@@ -148,14 +149,67 @@ const Terminal = () => {
           }
 
           const project = projects[projectIndex];
-          const projectUrl = configValues[project.id] as string;
-          if (projectUrl) {
-            window.open(projectUrl, "_blank");
+          const destinations = normalizeProjectLinks(configValues[project.id]);
+
+          if (destinations.length === 0) {
+            return <div className="text-white">Project URL not available.</div>;
+          }
+
+          if (destinations.length === 1) {
+            window.open(destinations[0].url, "_blank", "noopener,noreferrer");
             return (
               <div className="text-white">Opening project in new tab...</div>
             );
           }
-          return <div className="text-white">Project URL not available.</div>;
+
+          if (!linkNumber) {
+            return (
+              <div className="flex flex-col gap-2 text-white">
+                <div>{project.title}</div>
+                <div className="text-gray-400">Choose where to open:</div>
+                {destinations.map((destination, index) => (
+                  <div key={`${project.id}-${destination.label}`} className="ml-4">
+                    {index + 1}. {destination.label}
+                  </div>
+                ))}
+                <div className="mt-2 text-gray-400">
+                  Usage: projects go {projectIndex + 1} &lt;link-no&gt;
+                </div>
+                <div className="text-gray-400">
+                  eg: projects go {projectIndex + 1} 2
+                </div>
+              </div>
+            );
+          }
+
+          const destinationIndex = parseInt(linkNumber) - 1;
+
+          if (
+            isNaN(destinationIndex) ||
+            destinationIndex < 0 ||
+            destinationIndex >= destinations.length
+          ) {
+            return (
+              <div className="text-white">
+                Invalid link number. Type{" "}
+                <span className="text-purple">
+                  projects go {projectIndex + 1}
+                </span>{" "}
+                to see available destinations.
+              </div>
+            );
+          }
+
+          window.open(
+            destinations[destinationIndex].url,
+            "_blank",
+            "noopener,noreferrer",
+          );
+          return (
+            <div className="text-white">
+              Opening {destinations[destinationIndex].label} in new tab...
+            </div>
+          );
         }
 
         // Display projects list
@@ -171,7 +225,7 @@ const Terminal = () => {
               </div>
             ))}
             <div className="mt-2">
-              <div>Usage: projects go &lt;project-no&gt;</div>
+              <div>Usage: projects go &lt;project-no&gt; [&lt;link-no&gt;]</div>
               <div>eg: projects go 1</div>
             </div>
           </div>
