@@ -35,6 +35,7 @@ import {
   jampackdadmin,
   golddigger,
   outside,
+  biblealarm,
   stripe,
 } from "../assets";
 
@@ -645,6 +646,14 @@ export const projects: Project[] = [
     description:
       "A cross-platform mobile app for discovering fun things to do in Jamaica, with ideas matched to your vibe, budget, and parish across date nights, hidden gems, group outings, and at-home activities.",
     img: outside,
+    tools: [tools.flutter, tools.firebase],
+  },
+  {
+    id: "projectThirteen",
+    title: "Bible Alarm Mobile App",
+    description:
+      "A cross-platform Scripture alarm app that helps Christians wake into a focused devotional rhythm with native alarm scheduling, daily Bible readings, reflection prompts, completion questions, and premium devotional plans.",
+    img: biblealarm,
     tools: [tools.flutter, tools.firebase],
   },
 ];
