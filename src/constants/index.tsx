@@ -650,7 +650,7 @@ export const projects: Project[] = [
   },
   {
     id: "projectThirteen",
-    title: "Bible Alarm Mobile App",
+    title: "Verse O'Clock Mobile App",
     description:
       "A cross-platform Scripture alarm app that helps Christians wake into a focused devotional rhythm with native alarm scheduling, daily Bible readings, reflection prompts, completion questions, and premium devotional plans.",
     img: biblealarm,
